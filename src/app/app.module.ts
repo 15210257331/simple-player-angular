@@ -15,6 +15,10 @@ import { PlayerModule } from './home/player/player.module';
 import { NavModule } from './home/nav/nav.module';
 import { SharedModule } from './shared.module';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from "@ngrx/effects";
+import { reducers, effects } from './store';
+
 registerLocaleData(zh);
 
 @NgModule({
@@ -31,7 +35,10 @@ registerLocaleData(zh);
     HeaderModule,
     PlayerModule,
     NavModule,
-    SharedModule
+    SharedModule,
+    // 注册全局的reducer和effects
+    StoreModule.forRoot(reducers), 
+    EffectsModule.forRoot(effects),
   ],
   providers: [UtilsService, { provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
