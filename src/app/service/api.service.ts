@@ -143,5 +143,12 @@ export class ApiService {
     }
     constructor(private http: HttpClient) {
     }
+
+
+
+    
+    getSongDetail(id: string) {
+      return this.http.post(`${API}/song/detail`, {id: id});
+    }
 }
 
