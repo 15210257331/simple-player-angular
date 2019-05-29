@@ -1,0 +1,93 @@
+.sort {
+    width: 100%;
+    text-align: center;
+    .sort-hot {
+        width: 94%;
+        margin: 20px auto;
+    }
+    .sort-title {
+        font-size: 18px;
+        letter-spacing: 4px;
+        text-align: left;
+        margin: 0 auto;
+        width: 94%;
+    }
+    .sort-list {
+        width: 94%;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        & > div {
+          margin: 10px 0;
+          width: 200px;
+          height: 260px;
+          display: flex;
+          position: relative;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          overflow: hidden;
+          img {
+              display: inline-block;
+              height: 200px;
+              width: 200px;
+          }
+          .mask {
+              width: 200px;
+              height: 200px;
+              position: absolute;
+              left: 0;
+              top: 0;
+              opacity: 0;
+              transition: opacity .4s ease-out;
+              z-index: 10;
+              cursor: pointer;
+              background-color: black;
+          }
+          .mask:hover {
+              opacity: .2;
+          }
+          .mask:hover ~ .play {
+              color:white;
+          }
+          .play:hover {
+              color:#31c27c;
+              cursor: pointer;
+          }
+          .playCount, .play {
+              position: absolute;
+              bottom: 65px;
+              z-index: 20;
+          }
+          .playCount{
+              left: 5px;
+              color: white;
+          }
+          .play {
+              bottom: 52px;
+              right: 2px;
+              color:transparent;
+              i {
+                  font-size: 34px;
+                  
+              }
+              
+          }
+          p {
+              padding-top: 10px;
+              height: 60px;
+              width: 100%;
+              margin-bottom: 0;
+              text-align: left;
+              cursor: pointer;
+          }
+          p:hover {
+              color: #31c27c;
+          }
+        }
+    }
+}
+

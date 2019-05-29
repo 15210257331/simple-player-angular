@@ -1,0 +1,7 @@
+<div>
+  <button [ngStyle]="{'color': i === curIndex ? '#31c27c' : ''}" *ngFor="let item of showCatist; let i = index;" (click)="change(item.code, i)">
+    {{item.name}}
+  </button>
+  <button *ngIf="showBtn" (click)="showAllCatlist()">全部分类</button>
+  <button *ngIf="!showBtn" (click)="hide()">收起</button>
+</div>

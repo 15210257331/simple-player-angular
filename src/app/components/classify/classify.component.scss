@@ -1,0 +1,26 @@
+div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+button {
+    height: 32px;
+    width: auto;
+    line-height: 18px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 10px 10px 10px 0;
+    padding: 6px 20px;
+    box-sizing: border-box;
+    border: 1px solid #efefef;
+    background-color: #efefef;
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover {
+    color: #31c27c;
+}

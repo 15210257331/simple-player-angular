@@ -1,0 +1,23 @@
+<div class="radio-wrap">
+  <div class="radio">
+
+    <h3 class="radio-title">电台分类</h3>
+
+    <div class="radio-hot">
+      <app-classify [data]="radioClassifyList" (changeClassify)="changeClassify($event)"></app-classify>
+    </div>
+
+    <h3 class="radio-title">{{radioClassifyName}}</h3>
+
+    <div class="radio-list">
+      <div *ngFor="let item of radioList;" (click)="detail(item.id)">
+        <img src="{{item.picUrl}}" alt="">
+        <div class="mask"></div>
+        <span class="playCount"><i class="iconfont icon-headset"></i>{{item.playCount | numberToWan}}</span>
+        <span class="play"><i class="iconfont icon-play1"></i></span>
+        <p>{{item.name}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

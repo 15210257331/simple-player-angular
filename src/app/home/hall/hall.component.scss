@@ -1,0 +1,70 @@
+.music-hall {
+  height: 100%;
+  position: relative;
+
+  .music-hall-nav {
+    height: 60px;
+    padding: 10px 0;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    ul {
+      height: 40px;
+      width: 60%;
+      min-width: 500px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      margin: 0;
+
+      li {
+        color: #303133;
+        font-weight: 500;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+      }
+
+      li:before {
+        content: ''; // 必须
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        right: 0;
+        width: auto;
+        height: 2PX;
+        background-color: transparent;
+      }
+
+      li:hover {
+        color: #31c27c;
+      }
+
+      li:hover:before {
+        background-color: #31c27c;
+      }
+
+      .active {
+        color: #31c27c !important;
+      }
+
+      .active:before {
+        background-color: #31c27c !important;
+      }
+    }
+
+  }
+
+  .music-hall-content {
+    position: absolute;
+    top: 60px;
+    bottom: 80px;
+    overflow: scroll;
+    width: 100%;
+    padding: 10px 0;
+  }
+}

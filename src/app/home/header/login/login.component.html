@@ -1,0 +1,29 @@
+<div class="login">
+    <p style="text-align: center;">输入网易云音乐账号密码即可</p>
+    <form nz-form [formGroup]="validateForm" class="login-form">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group nzPrefixIcon="anticon anticon-user">
+            <input type="text" nz-input formControlName="phone" placeholder="输入手机号">
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('phone').dirty && validateForm.get('phone').errors">
+            请输入手机号！
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group nzPrefixIcon="anticon anticon-lock">
+            <input type="password" nz-input formControlName="password" placeholder="输入密码">
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">
+            请输入密码！
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <div class="footer">
+        <button nz-button class="login-form-button" nzType="primary" (click)="login(validateForm.value)" [disabled]="!validateForm.valid">登录</button>
+        <button nz-button class="login-form-button" (click)="cancel()" nzType="default">取消</button>
+      </div>
+    </form>
+  </div>

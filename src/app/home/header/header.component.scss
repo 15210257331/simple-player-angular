@@ -1,0 +1,76 @@
+@import '../../../styles';
+
+.header {
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $baseColor;
+    position: relative;
+    .header-logo {
+      width: 230px;
+      padding: 0 0 0 20px;
+      text-align: center;
+      h2 {
+        color: white;
+      }
+    }
+    .header-option {
+        margin-right: 20px;
+        i {
+            margin: 0 10px;
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+        }
+    }
+    form.header-search {
+        position: relative;
+        input {
+          outline: none;
+          width: 200px;
+          height: 32px;
+          padding-left: 20px;
+          border: none;
+          background-color: white;
+          border: 1px solid white;
+          border-radius: 16px;
+          font-size: 14px;
+          color: white;
+        }
+        i {
+            position: absolute;
+            right: 12px;
+            top: 7px;
+            font-size: 15px;
+            cursor: pointer;
+            color: black;
+        }
+    }
+    .header-user {
+      position: absolute;
+      display: flex;
+      height: 100%;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      right: 70px;
+      cursor: pointer;
+      span {
+        margin: 0 10px;
+        color: white;
+        font-size: 500;
+      }
+      .line {
+        width: 1px;
+        height: 90%;
+        background-color: white;
+        border-radius: 1px;
+      }
+      i{
+        font-size: 15px;
+        color:black;
+      }
+    }
+}

@@ -1,0 +1,14 @@
+<div class="mv-wrap">
+  <div class="mv">
+    <h3 class="mv-title">最新MV</h3>
+    <div class="mv-list">
+      <div *ngFor="let item of mvList;" (click)="detail(item.id)">
+        <img src="{{item.cover}}" alt="">
+        <div class="mask"></div>
+        <span class="playCount"><i class="iconfont icon-headset"></i>{{item.playCount | numberToWan}}</span>
+        <span class="play"><i class="iconfont icon-play1"></i></span>
+        <p>{{item.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+
+<div class="music-mask">
+    <div class="music-list">
+      <div class="music-list-option">
+        <a>收藏</a>
+        <a>删除</a>
+        <a (click)="clearPlayList()">清空列表</a>
+      </div>
+      <div class="music-list-wrap">
+          <table>
+              <thead>
+                <tr>
+                  <th width="5%"><input type="checkbox"></th>
+                  <th width="50%" style="text-align: left;margin-left: 10px;">歌曲</th>
+                  <th width="30%">歌手</th>
+                  <th width="15%">时长</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of playList;let i = index;">
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td style="text-align: left">
+                    <a *ngIf="i == currentIndexInPlayList;" class="play-now"></a>
+                    <span>{{item.name}}</span>
+                    <i (click)="collectionMusic(item._id)" title="收藏" class="iconfont icon-heart1"></i>
+                    <i (click)="deleteMusic(i)" style="font-size: 20px;" title="删除" class="iconfont icon-trash-"></i>
+                    <i (click)="playMusic(i)" title="播放" class="iconfont icon-play1"></i>
+                  </td>
+                  <td>
+                    <span *ngIf="item.ar">{{item.ar[0]['name']}}</span>
+                    <ng-container *ngIf="!item.ar">
+                      <span style="margin: 0 5px;" *ngFor="let sonItem of item['artists']">
+                        {{sonItem.name}}
+                      </span>
+                    </ng-container>
+                  </td>
+                  <td>
+                    <span>{{item.dt ? utilsService.formatDate(item.dt) : '00:00'}}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+    </div>
+  
+    <div class="music-info">
+      <img alt="专辑图片" [src]="currentMusic.songPic ? currentMusic.songPic : 'assets/img/default-music-pic.jpg'">
+      <p>{{currentMusic.songName ? '歌曲名:' + currentMusic.songName : ''}}</p>
+      <p>{{currentMusic.singerName ? '歌手名:' + currentMusic.singerName : ''}}</p>
+      <div class="music-lrc-wrap">
+        <p class="music-lrc">
+          <span class="music-lrc-item" *ngFor="let item of currentMusic.lyrics;let i = index;" [ngStyle]="{'color':nowPlayLrcIndex === i ? '#01e5ff' : 'white'}">
+            {{item[1]}}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="music-player">
+    <i *ngIf="showList" title="收缩" (click)="showListAndLrc()" class="toDown iconfont icon-upa"></i>
+    <i *ngIf="!showList" title="展开" (click)="showListAndLrc()" class="toUp iconfont icon-upa"></i>
+    <audio class="audio" [src]="currentMusic?.url" autoplay="autoplay"></audio>
+    <div class="music-player-left">
+      <i title="上一曲" (click)="previous()" class="iconfont icon-previous"></i>
+      <i title="播放" (click)="togglePlay()" style="font-size: 35px;" *ngIf="audioRef.paused" class="iconfont icon-playcircle"></i>
+      <i title="暂停" (click)="togglePlay()" style="font-size: 35px;" *ngIf="!audioRef.paused" class="iconfont icon-Pause"></i>
+      <i title="下一曲" (click)="next()" class="iconfont icon-next"></i>
+    </div>
+    <div class="music-player-center">
+      <img [src]="currentMusic.songPic ? currentMusic.songPic : 'assets/img/default-music-pic.jpg'" alt="">
+      <div class="progress-info">
+        <span *ngIf="currentMusic._id" class="progress-info-left">{{currentMusic.songName + '/' + currentMusic.singerName}}</span>
+        <span *ngIf="!currentMusic._id" class="progress-info-left">脑残音乐,无所畏惧</span>
+        <span *ngIf="currentMusic._id" class="progress-info-right">{{utilsService.formatDate(audioRef?.currentTime) + '/' + utilsService.formatDate(audioRef?.duration)}}</span>
+        <span *ngIf="!currentMusic._id" class="progress-info-right">00:00/00:00</span>
+        <app-progress [rate]="rate" (changeRate)="change($event)"></app-progress>
+      </div>
+    </div>
+    <div class="music-player-right">
+      <i title="循环播放" class="iconfont icon-repeat"></i>
+      <i title="评论" class="iconfont icon-comment"></i>
+      <i title="收藏" class="iconfont icon-heart1" (click)="collectionMusic(currentMusic._id)"></i>
+      <!-- <i title="音量" class="iconfont icon-voiceon"></i> -->
+    </div>
+  </div>
+  

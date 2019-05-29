@@ -1,0 +1,14 @@
+<div class="music-hall">
+  <div class="music-hall-nav">
+    <ul>
+      <li *ngFor="let item of componentsMap;" [ngClass]="{'active': item.index === selectIndex}"
+        (click)="changeTab(item)">
+        {{item.name}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="music-hall-content">
+    <ng-template #hallContainer></ng-template>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="loading-mask" *ngIf="!_loadingDone">
+    <div class="loading-wrap" >
+        <div class="loading-indicator">
+            <span class="thy-spot"></span>
+        </div>
+        <span [style.display]="_tip ? 'block' : 'none'">{{_tip}}</span>
+    </div>
+    <ng-content *ngIf="_loadingDone"></ng-content>
+</div>
