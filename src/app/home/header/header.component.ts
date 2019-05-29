@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../service/api.service';
-import { MusicStore, musicListActions } from '../../store/music.store';
 import { UtilsService } from '../../service/util.service';
 import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
-import { UserStore } from '../../store/user.store';
 import { LoginComponent } from './login/login.component';
 import { UserService } from '../../service/user.service';
 import { UserInfo } from '../../entity';
@@ -23,11 +21,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    public musicStore: MusicStore,
     public utilsService: UtilsService,
     private router: Router,
     private modalService: NzModalService,
-    public userStore: UserStore,
     private message: NzMessageService,
     private userService: UserService) { }
 
@@ -80,9 +76,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.apiService.logout().subscribe(res => {
-      this.message.success('退出成功！', { nzDuration: 1000 });
-      this.userStore.clear();
-    });
+    // this.apiService.logout().subscribe(res => {
+    //   this.message.success('退出成功！', { nzDuration: 1000 });
+    //   this.userStore.clear();
+    // });
   }
 }

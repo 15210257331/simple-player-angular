@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NzModalRef, NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { LoginComponent } from '../header/login/login.component';
 import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
-import { UserStore, userActions } from '../../store/user.store';
 import { ApiService } from '../../service/api.service';
 
 @Component({
@@ -20,23 +19,22 @@ export class NavComponent implements OnInit {
 
   constructor(
     private modalService: NzModalService,
-    public userStore: UserStore,
     private apiService: ApiService,
     private message: NzMessageService,
     ) { }
 
   ngOnInit() {
-    this.apiService.getLoginStatus().subscribe((res: any) => {
-      this.userStore.dispatch(userActions.getUserInfo, res.profile.userId).pipe().subscribe(() => {});
-    }, error => {
-      console.log('未登录');
-    });
+    // this.apiService.getLoginStatus().subscribe((res: any) => {
+    //   this.userStore.dispatch(userActions.getUserInfo, res.profile.userId).pipe().subscribe(() => {});
+    // }, error => {
+    //   console.log('未登录');
+    // });
   }
 
-  newSongList() {
-    this.showSongListEdit = false;
-    this.userStore.dispatch(userActions.newSongList, this.songListName).subscribe(res => {
-      this.songListName = '';
-    });
-  }
+  // newSongList() {
+  //   this.showSongListEdit = false;
+  //   this.userStore.dispatch(userActions.newSongList, this.songListName).subscribe(res => {
+  //     this.songListName = '';
+  //   });
+  // }
 }

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService, NzModalRef } from 'ng-zorro-antd';
 import { ApiService } from '../../../service/api.service';
-import { UserStore, userActions } from '../../../store/user.store';
 import { UserService } from '../../../service/user.service';
 
 @Component({
@@ -20,7 +19,6 @@ export class LoginComponent implements OnInit {
     private message: NzMessageService,
     private apiService: ApiService,
     private modal: NzModalRef,
-    private userStore: UserStore,
     private UserService: UserService
   ) {
   }
