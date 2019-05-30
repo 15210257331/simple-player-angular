@@ -1,3 +1,17 @@
-<p>
-  play-detail works!
-</p>
+<div class="song-detail">
+    <div class="song-detail-cover">
+        <img alt="专辑图片" [src]="currentSong.songPic ? currentSong.songPic : 'assets/img/default-music-pic.jpg'">
+        <p>{{currentSong.songName ? '歌曲名:' + currentSong.songName : ''}}</p>
+        <p>{{currentSong.singerName ? '歌手名:' + currentSong.singerName : ''}}</p>
+    </div>
+    <div class="song-detail-lyrics">
+        <div class="music-lrc-wrap">
+            <p class="music-lrc">
+                <ng-container *ngFor="let item of currentSong.lyrics;let i = index;">
+                    <span class="music-lrc-item" [ngStyle]="{'color':nowPlayLrcIndex === i ? '#01e5ff' : 'white'}">
+                      {{item[1]}}</span>
+                </ng-container>
+            </p>
+        </div>
+    </div>
+</div>

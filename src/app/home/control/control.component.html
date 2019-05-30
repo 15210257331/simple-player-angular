@@ -1,8 +1,8 @@
 <div class="music-player">
-    <i *ngIf="showList" title="收缩" (click)="showListAndLrc()" class="toDown iconfont icon-upa"></i>
-    <i *ngIf="!showList" title="展开" (click)="showListAndLrc()" class="toUp iconfont icon-upa"></i>
-    <audio class="audio" [src]="currentMusic?.url" autoplay="autoplay"></audio>
-    <div class="music-player-left">
+    <i title="收缩" (click)="showDetail()" class="toDown iconfont icon-upa"></i>
+    <i title="展开" (click)="showDetail()" class="toUp iconfont icon-upa"></i>
+    <!-- <audio class="audio" [src]="currentMusic?.url" autoplay="autoplay"></audio> -->
+    <!-- <div class="music-player-left">
         <i title="上一曲" (click)="previous()" class="iconfont icon-previous"></i>
         <i title="播放" (click)="togglePlay()" style="font-size: 35px;" *ngIf="audioRef.paused" class="iconfont icon-playcircle"></i>
         <i title="暂停" (click)="togglePlay()" style="font-size: 35px;" *ngIf="!audioRef.paused" class="iconfont icon-Pause"></i>
@@ -17,7 +17,7 @@
             <span *ngIf="!currentMusic._id" class="progress-info-right">00:00/00:00</span>
             <app-progress [rate]="rate" (changeRate)="change($event)"></app-progress>
         </div>
-    </div>
+    </div>-->
     <div class="music-player-right">
         <i title="循环播放" class="iconfont icon-repeat"></i>
         <i title="评论" class="iconfont icon-comment"></i>
@@ -25,3 +25,5 @@
         <i title="播放列表" class="iconfont icon-list" (click)="showPlaylist()"></i>
     </div>
 </div>
+
+<app-play-detail [show]="isShowDetail"></app-play-detail>

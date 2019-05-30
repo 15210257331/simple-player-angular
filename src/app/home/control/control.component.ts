@@ -11,6 +11,26 @@ export class ControlComponent implements OnInit {
 
   value: string = 'zhagsan';
 
+  isShowDetail: boolean = false;
+
+  currentMusic: any;
+
+  playList: Array<any> = [];
+
+  showList = false;
+
+  audioRef: any;
+
+  musicMaskRef: any;
+
+  musicLrcRef: any;
+
+  currentIndexInPlayList = 0;
+
+  rate = 0;
+
+  nowPlayLrcIndex;
+
   constructor(
     private drawerService: NzDrawerService
   ) { }
@@ -39,7 +59,11 @@ export class ControlComponent implements OnInit {
     });
   }
 
+  showDetail() {
+    this.isShowDetail = !this.isShowDetail;
+  }
+
   collectionMusic() {
-    
+
   }
 }
