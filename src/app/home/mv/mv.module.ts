@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../../shared.module';
-import { HotComponent } from './hot.component';
+import { MvComponent } from '../mv/mv.component';
 
 const route: Routes = [
     {
       path: '',
-      component: HotComponent,
+      component: MvComponent,
     },
   ];
 
 @NgModule({
   declarations: [
-    HotComponent,
+    MvComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +21,7 @@ const route: Routes = [
     RouterModule.forChild(route),
   ],
   exports: [
+
   ],
 })
-export class HotModule { }
+export class MvModule { }

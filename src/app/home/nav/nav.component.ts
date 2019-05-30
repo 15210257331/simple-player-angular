@@ -37,4 +37,8 @@ export class NavComponent implements OnInit {
   //     this.songListName = '';
   //   });
   // }
+
+  openLogin() {
+    
+  }
 }

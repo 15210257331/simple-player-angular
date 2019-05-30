@@ -13,21 +13,20 @@ const routes: Routes = [
       canLoad: []
     },
     {
+      path: 'singer',
+      loadChildren: './home/singer/singer.module#SingerModule',
+      canLoad: []
+    },
+    {
+      path: 'rank',
+      loadChildren: './home/rank/rank.module#RankModule',
+      canLoad: []
+    },
+    {
       path: 'mv',
-      loadChildren: './home/mv/mv.module#MvlModule',
+      loadChildren: './home/mv/mv.module#MvModule',
       canLoad: []
     },
-    {
-      path: 'radio',
-      loadChildren: './home/radio/radio.module#RadioModule',
-      canLoad: []
-    },
-    {
-      path: 'detail',
-      loadChildren: './home/detail/detail.module#DetailModule',
-      canLoad: []
-    },
-   
   ];
 
 @NgModule({

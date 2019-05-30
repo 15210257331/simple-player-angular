@@ -1,25 +1,11 @@
 <div class="header">
-  <div class="header-logo">
-    <h2>脑残音乐</h2>
-  </div>
-  <div class="header-option">
-    <i class="iconfont icon-left" (click)="back()"></i>
-    <i class="iconfont icon-right" (click)="ahead()"></i>
-    <i class="iconfont icon-refresh" (click)="refresh()"></i>
-  </div>
-  <form class="header-search">
-    <input type="text" name="keyWord" placeholder="搜索音乐、歌单、MV" [(ngModel)]="keyword" (keydown.enter)="searchMusic()">
-    <i title="搜索" (click)="searchMusic()" class="iconfont icon-zoom-out"></i>
-  </form>
-  <div class="header-user">
-    <ng-container *ngIf="userInfo">
-      <nz-avatar nzIcon="user" [nzSrc]="userInfo.avator"></nz-avatar>
-      <span>{{userInfo.nickname}}</span>
-      <span (click)="logout()">退出</span>
-    </ng-container>
-    <ng-container *ngIf="!userInfo">
-      <nz-avatar nzIcon="user" [nzSrc]="'assets/img/default-music-pic.jpg'"></nz-avatar>
-      <span (click)="openLogin()">请登录</span>
-    </ng-container>
-  </div>
+    <div class="header-option">
+        <i class="iconfont icon-left" (click)="back()"></i>
+        <i class="iconfont icon-right" (click)="ahead()"></i>
+        <i class="iconfont icon-refresh" (click)="refresh()"></i>
+    </div>
+    <form class="header-search">
+        <input type="text" name="keyWord" placeholder="搜索音乐、歌单、MV" [(ngModel)]="keyword" (keydown.enter)="searchMusic()">
+        <i title="搜索" (click)="searchMusic()" class="iconfont icon-zoom-out"></i>
+    </form>
 </div>

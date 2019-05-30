@@ -2,18 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../../shared.module';
-import { HotComponent } from './hot.component';
+import { RankComponent } from '../rank/rank.component';
+
 
 const route: Routes = [
     {
       path: '',
-      component: HotComponent,
+      component: RankComponent,
     },
   ];
 
 @NgModule({
   declarations: [
-    HotComponent,
+    RankComponent,
   ],
   imports: [
     CommonModule,
@@ -23,4 +24,4 @@ const route: Routes = [
   exports: [
   ],
 })
-export class HotModule { }
+export class RankModule { }

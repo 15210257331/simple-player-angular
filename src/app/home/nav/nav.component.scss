@@ -1,44 +1,47 @@
 @import '../../../styles';
-// .avator {
-//     width: 100%;
-//     height: 160px;
-//     text-align: center;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-around;
-//     align-items: center;
-//     margin-top: 10px;
-//     position: relative;
-//     img {
-//         width: 90px;
-//         height: 90px;
-//         display: inline-block;
-//         border-radius: 45px;
-//         border: 2px solid $baseColor;
-//     }
-//     h3, h4 {
-//         font-size: 21px;
-//         cursor: pointer;
-//         span {
-//             font-size: 13px;
-//         }
-//         span:hover {
-//             color:$baseColor;
-//         }
-//     }
-//     h3:hover {
-//         color: $baseColor;
-//     }
-//     i {
-//         position: absolute;
-//         font-size: 20px;
-//         right: 64px;
-//         top: 80px;
-//     }
-// }
-// .ant-modal-close-x {
-//     outline: none!important;
-// }
+.user-info {
+    width: 100%;
+    height: 160px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    position: relative;
+    img {
+        width: 90px;
+        height: 90px;
+        display: inline-block;
+        border-radius: 45px;
+        border: 2px solid $baseColor;
+    }
+    h3,
+    h4 {
+        font-size: 18px;
+        cursor: pointer;
+        span {
+            font-size: 13px;
+        }
+        span:hover {
+            color: $baseColor;
+        }
+    }
+    h3:hover {
+        color: $baseColor;
+    }
+    i {
+        position: absolute;
+        font-size: 20px;
+        right: 64px;
+        top: 80px;
+    }
+}
+
+.ant-modal-close-x {
+    outline: none!important;
+}
+
 .nav-wrap {
     padding: 10px 20px 20px 20px;
     overflow-y: auto;
@@ -62,15 +65,15 @@
     .nav-item {
         height: 25px;
         line-height: 25px;
-        font-size:16px;
-        color:black;
-        padding-left:10px;
+        font-size: 16px;
+        color: black;
+        padding-left: 10px;
         border-radius: 3px;
         margin: 5px 0;
         outline: none;
         cursor: pointer;
         span {
-            i{
+            i {
                 margin-right: 10px;
                 font-size: 16px;
             }
@@ -83,12 +86,12 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-      span {
-          font-size: 14px;
-          
-      }
+        span {
+            font-size: 14px;
+        }
     }
 }
+
 .active {
     color: white!important;
     background-color: #31c27c!important;
