@@ -18,6 +18,8 @@ export class PlayDetailComponent implements OnInit {
 
   @Input() currentSong: any;
 
+  detailElement: any;
+
   constructor(
     public utilsService: UtilsService,
     private el: ElementRef,
@@ -25,16 +27,18 @@ export class PlayDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.detailElement = this.el.nativeElement.querySelector('.song-detail');
   }
 
   setPlaylistClass(value: boolean) {
-    if (value === true) {
-      this.renderer2.setStyle(this.el.nativeElement, 'top', '0');
-      this.renderer2.setStyle(this.el.nativeElement, 'bottom', '80px');
-    } else {
-      this.renderer2.setStyle(this.el.nativeElement, 'top', '100%');
-      this.renderer2.setStyle(this.el.nativeElement, 'bottom', '0');
+    if(this.detailElement) {
+      if (value === true) {
+        this.renderer2.setStyle(this.detailElement, 'top', '0');
+        this.renderer2.setStyle(this.detailElement, 'bottom', '80px');
+      } else {
+        this.renderer2.setStyle(this.detailElement, 'top', '100%');
+        this.renderer2.setStyle(this.detailElement, 'bottom', '0');
+      }
     }
   }
 

@@ -1,3 +1,29 @@
-<p>
-  hot works!
-</p>
+<div class="chosen">
+    <div class="chosen-banner">
+      <nz-carousel *ngIf="bannerArray.length > 0" [nzEffect]="'fade'" nzAutoPlay>
+        <div nz-carousel-content *ngFor="let item of bannerArray">
+          <img src="{{item.imageUrl}}" alt="">
+        </div>
+      </nz-carousel>
+    </div>
+  
+    <div class="chosen-recommend">
+      <h3>歌单分类</h3>
+      <app-classify [data]="classifyList" (changeClassify)="changeClassify($event)"></app-classify>
+    </div>
+  
+    <h3 style="width: 94%; margin: 0 auto;font-size: 18px; letter-spacing: 4px; text-align: left;">为你推荐歌单</h3>
+  
+    <div class="chosen-list">
+      <div *ngFor="let item of listArray;" (click)="detail(item.id)">
+        <img src="{{item.picUrl}}" alt="">
+        <div class="mask"></div>
+        <span class="playCount"><i class="iconfont icon-headset"></i>{{item.playCount | numberToWan}}</span>
+        <span class="play"><i class="iconfont icon-play1"></i></span>
+        <p>{{item.name}}</p>
+      </div>
+    </div>
+  
+    <nz-spin *ngIf="!loadingDone" nzSimple></nz-spin>
+  </div>
+  

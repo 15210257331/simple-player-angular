@@ -1,0 +1,12 @@
+{
+    "/netCloudApi": {
+      "target": "http://39.104.147.212:4000",
+      "secure": false
+    },
+    "/api": {
+      "target": "http://localhost:3000/api",
+      "secure": false,
+      "pathRewrite": {"/api" : ""}
+    }
+}
+  
