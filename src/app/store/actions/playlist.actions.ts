@@ -5,13 +5,14 @@ export enum PlaylistActionTypes {
     LoadCurrentSongSuccess = 'LoadCurrentSongSuccess',
     LoadCurrentSongError = 'LoadCurrentSongError',
     ChangeCurrentSong = 'ChangeCurrentSong',
-    AddToSongList = 'AddToSongList',
-    DeleteSongList = 'DeleteSongList'
+    AddToPlaylist = 'AddToPlaylist',
+    DeleteSongFromPlaylist = 'DeleteSongFromPlaylist',
+    ClearPlaylist = 'ClearPlaylist',
 }
 
 export class LoadCurrentSong implements Action {
     readonly type = PlaylistActionTypes.LoadCurrentSong;
-    constructor(public payload:string) {}
+    constructor(public payload:number) {}
 }
 
 export class LoadCurrentSongSuccess implements Action {
@@ -24,15 +25,26 @@ export class LoadCurrentSongError implements Action {
     constructor(public payload:any) {}
 }
 
-export class AddToSongList implements Action {
-    readonly type = PlaylistActionTypes.AddToSongList;
-    constructor(public payload: any) { };
-}
-
 export class ChangeCurrentSong implements Action {
     readonly type = PlaylistActionTypes.ChangeCurrentSong;
     constructor(public payload: any) { };
 }
+
+
+export class AddToPlaylist implements Action {
+    readonly type = PlaylistActionTypes.AddToPlaylist;
+    constructor(public payload: any) { };
+}
+
+export class DeleteSongFromPlaylist implements Action {
+    readonly type = PlaylistActionTypes.DeleteSongFromPlaylist;
+    constructor(public payload: any) { };
+}
+
+export class ClearPlaylist implements Action {
+    readonly type = PlaylistActionTypes.ClearPlaylist;
+}
+
 
 
 

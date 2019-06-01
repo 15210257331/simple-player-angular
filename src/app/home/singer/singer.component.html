@@ -1,3 +1,18 @@
-<p>
-  singer works!
-</p>
+<div class="singer">
+
+    <h3 class="singer-title">歌手分类</h3>
+  
+    <div class="singer-classify">
+      <app-classify [data]="singerClassifyList" (changeClassify)="changeClassify($event)"></app-classify>
+    </div>
+  
+    <h3 class="singer-title">{{singerName}}</h3>
+  
+    <div class="singer-list">
+      <div *ngFor="let item of singerList; let i = index;" (click)="detail(item.id)" class="singer-list-item">
+        <img src="{{item.picUrl}}" alt="">
+        <p>{{item.name}}</p>
+      </div>
+    </div>
+  </div>
+  

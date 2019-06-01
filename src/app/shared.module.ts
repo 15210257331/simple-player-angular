@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UtilsService } from './service/util.service';
 import { CounterComponent } from './components/counter/counter.component';
 import { SwitchComponent } from './components/switch/switch.component';
 import { ProgressComponent } from './components/progress/progress.component';
@@ -35,7 +34,7 @@ import { TimePipe } from './directive/time.pipe';
     RouterModule,
     NgZorroAntdModule
   ],
-  providers: [UtilsService],
+  providers: [],
   exports: [
     FormsModule,
     ReactiveFormsModule,

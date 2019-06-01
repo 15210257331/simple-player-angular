@@ -4,9 +4,12 @@
       "secure": false
     },
     "/api": {
-      "target": "http://localhost:3000/api",
+      "target": "http://localhost:3000",
       "secure": false,
       "pathRewrite": {"/api" : ""}
+    },
+    "/comment": {
+      "target": "请求/api/list 的接口，实际是请求的 http://localhost:3000/api/list pathRewrite 将地址中的/api 替换成’‘"
     }
 }
   

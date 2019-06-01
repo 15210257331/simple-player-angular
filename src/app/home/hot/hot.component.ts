@@ -54,7 +54,7 @@ export class HotComponent implements OnInit {
   }
 
   detail(id: string) {
-    this.router.navigate(['/detail'], {queryParams: {id: id}});
+    this.router.navigate(['/hot/detail'], {queryParams: {id: id}});
   }
 
   changeClassify(code: number) {

@@ -1,2 +1,2 @@
-export * from './search.actions';
 export * from './playlist.actions';
+export * from './global.action';

@@ -1,59 +1,34 @@
-<!-- <div class="music-mask">
-    <div class="music-list">
-        <div class="music-list-option">
-            <a>收藏</a>
-            <a>删除</a>
-            <a (click)="clearPlayList()">清空列表</a>
-        </div>
-        <div class="music-list-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th width="5%"><input type="checkbox"></th>
-                        <th width="50%" style="text-align: left;margin-left: 10px;">歌曲</th>
-                        <th width="30%">歌手</th>
-                        <th width="15%">时长</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of playList;let i = index;">
-                        <td>
-                            <input type="checkbox">
-                        </td>
-                        <td style="text-align: left">
-                            <a *ngIf="i == currentIndexInPlayList;" class="play-now"></a>
-                            <span>{{item.name}}</span>
-                            <i (click)="collectionMusic(item._id)" title="收藏" class="iconfont icon-heart1"></i>
-                            <i (click)="deleteMusic(i)" style="font-size: 20px;" title="删除" class="iconfont icon-trash-"></i>
-                            <i (click)="playMusic(i)" title="播放" class="iconfont icon-play1"></i>
-                        </td>
-                        <td>
-                            <span *ngIf="item.ar">{{item.ar[0]['name']}}</span>
-                            <ng-container *ngIf="!item.ar">
-                                <span style="margin: 0 5px;" *ngFor="let sonItem of item['artists']">
-                      {{sonItem.name}}
-                    </span>
-                            </ng-container>
-                        </td>
-                        <td>
-                            <span>{{item.dt ? utilsService.formatDate(item.dt) : '00:00'}}</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div class="playlist-wrap" (blur)="closePlaylist()" tabindex="0">
+  <header>
+    <h2>播放列表</h2>
+    <p>
+      <span>共{{_playlist.length}}首歌</span>
+      <span (click)="clearPlaylist()">
+        <i title="清空" class="iconfont icon-trash-"></i>
+        <span style="font-size: 14px;">清空</span>
+      </span>
+    </p>
+  </header>
 
-    <div class="music-info">
-        <img alt="专辑图片" [src]="currentMusic.songPic ? currentMusic.songPic : 'assets/img/default-music-pic.jpg'">
-        <p>{{currentMusic.songName ? '歌曲名:' + currentMusic.songName : ''}}</p>
-        <p>{{currentMusic.singerName ? '歌手名:' + currentMusic.singerName : ''}}</p>
-        <div class="music-lrc-wrap">
-            <p class="music-lrc">
-                <span class="music-lrc-item" *ngFor="let item of currentMusic.lyrics;let i = index;" [ngStyle]="{'color':nowPlayLrcIndex === i ? '#01e5ff' : 'white'}">
-          {{item[1]}}
-        </span>
-            </p>
+  <div class="playlist-list">
+    <li *ngFor="let item of _playlist; let i = index;">
+      <div class="item-left">
+        <img [src]="item?.al?.picUrl" alt="歌曲图片">
+        <div [ngClass]="{'playNow': _index === i}">
+          <p>{{item['name']}}</p>
+          <p>{{item.ar[0]['name']}}</p>
         </div>
-    </div>
-</div> -->
+        <img *ngIf="_index === i" class="gif" [src]="'assets/img/play.gif'" alt="">
+      </div>
+      <div class="item-right">
+        <p>
+          <i title="播放" (click)="playSong(item)" class="iconfont icon-play3"></i>
+          <i title="收藏" (click)="collectionSong(item)" class="iconfont icon-heart1"></i>
+          <i title="下载" (click)="downloadSong(item)"class="iconfont icon-download"></i>
+          <i title="删除" (click)="deleteSong(item)" class="iconfont icon-trash-"></i>
+        </p>
+      </div>
+      <span class="time">{{item.dt | formatTime}}</span>
+    </li>
+  </div>
+</div>

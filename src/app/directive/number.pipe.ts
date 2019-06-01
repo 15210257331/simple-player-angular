@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-// 管道装师符 ， name就是管道名称
+// 管道装饰器 ， name就是管道名称
 @Pipe({
   name: 'numberToWan'
 })

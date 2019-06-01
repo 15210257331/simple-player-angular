@@ -1,17 +1,25 @@
-<div class="song-detail">
+<div class="song-detail-wrap">
+  <div class="song-detail">
     <div class="song-detail-cover">
-        <img alt="专辑图片" [src]="currentSong?.songPic ? currentSong?.songPic : 'assets/img/default-music-pic.jpg'">
-        <p>{{currentSong?.songName ? '歌曲名:' + currentSong?.songName : ''}}</p>
-        <p>{{currentSong?.singerName ? '歌手名:' + currentSong?.singerName : ''}}</p>
+      <img alt="专辑图片" [src]="_currentSong?.songPic ? _currentSong?.songPic : 'assets/img/default-music-pic.jpg'">
+      <p>
+        <i title="循环播放" class="iconfont icon-repeat"></i>
+        <i title="评论" class="iconfont icon-comment"></i>
+        <i title="评论" class="iconfont icon-comment"></i>
+      </p>
     </div>
+
     <div class="song-detail-lyrics">
-        <div class="music-lrc-wrap">
-            <p class="music-lrc">
-                <ng-container *ngFor="let item of currentSong?.lyrics;let i = index;">
-                    <span class="music-lrc-item" [ngStyle]="{'color':nowPlayLrcIndex === i ? '#01e5ff' : 'white'}">
-                      {{item[1]}}</span>
-                </ng-container>
-            </p>
-        </div>
+      <h2>{{_currentSong?.songName}}</h2>
+      <h4><span>歌手: {{_currentSong?.singerName}}</span></h4>
+      <div class="music-lrc-wrap">
+        <p class="music-lrc">
+          <ng-container *ngFor="let item of _currentSong?.lyrics;let i = index;">
+            <span class="music-lrc-item" [ngStyle]="{'color':nowPlayLrcIndex === i ? '#01e5ff' : 'black'}">
+              {{item[1]}}</span>
+          </ng-container>
+        </p>
+      </div>
     </div>
+  </div>
 </div>

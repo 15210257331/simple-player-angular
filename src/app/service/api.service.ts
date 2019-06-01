@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const API = `/netCloudApi`
+const API = `/api`
 
 @Injectable()
 export class ApiService {
@@ -146,9 +146,19 @@ export class ApiService {
 
 
 
+    // 歌曲详情 (可传多个)
+    getSongDetail(ids: number) {
+      return this.http.get(`${API}/song/detail?ids=${ids}`);
+    }
+
+    // 歌曲mp3资源
+    getSongUrl(id: number) {
+      return this.http.get(`${API}/song/url?id=${id}`);
+    }
     
-    getSongDetail(id: string) {
-      return this.http.post(`${API}/song/detail`, {id: id});
+    // 歌曲歌词
+    getSongLyric(id: number) {
+      return this.http.get(`${API}/lyric?id=${id}`);
     }
 }
 

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../service/api.service';
-import { UtilsService } from '../../service/util.service';
 import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { LoginComponent } from './login/login.component';
-import { UserService } from '../../service/user.service';
 import { UserInfo } from '../../entity';
 
 @Component({
@@ -21,22 +19,21 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    public utilsService: UtilsService,
     private router: Router,
     private modalService: NzModalService,
     private message: NzMessageService,
-    private userService: UserService) { }
+    ) { }
 
   ngOnInit() {
     this.getUserInfo();
   }
   
   getUserInfo() {
-    this.userService.getUserInfo().subscribe(res => {
-      if(res['result']) {
-        this.userInfo = res['data'];
-      }
-    })
+    // this.userService.getUserInfo().subscribe(res => {
+    //   if(res['result']) {
+    //     this.userInfo = res['data'];
+    //   }
+    // })
   }
 
   searchMusic() {

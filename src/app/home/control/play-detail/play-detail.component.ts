@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ElementRef, Renderer2 } from '@angular/core';
-import { UtilsService } from '../../../service/util.service';
+import { Component, OnInit, Input, ElementRef, Renderer2, HostListener } from '@angular/core';
+import { fromEvent } from 'rxjs';
 
 
 @Component({
@@ -9,6 +9,14 @@ import { UtilsService } from '../../../service/util.service';
 })
 export class PlayDetailComponent implements OnInit {
 
+  detailElement: any;
+
+  musicLrcRef: any;
+
+  _currentSong: any;
+
+  nowPlayLrcIndex: number;
+
   @Input()
   set show(value: boolean) {
     if (value !== null) {
@@ -16,18 +24,40 @@ export class PlayDetailComponent implements OnInit {
     }
   }
 
-  @Input() currentSong: any;
+  @Input() 
+  set currentSong(value: any) {
+    if(value) {
+      this._currentSong = value;
+    }
+  }
 
-  detailElement: any;
-
+  @Input() 
+  set nowPlayTime(value: any) {
+    if(value) {
+      this.setSongLyricsClass(value);
+    }
+  }
+  
   constructor(
-    public utilsService: UtilsService,
     private el: ElementRef,
     private renderer2: Renderer2
   ) { }
 
   ngOnInit() {
-    this.detailElement = this.el.nativeElement.querySelector('.song-detail');
+    this.detailElement = this.el.nativeElement.querySelector('.song-detail-wrap');
+    this.musicLrcRef = this.el.nativeElement.querySelector('.music-lrc');
+  }
+
+  setSongLyricsClass(currentTime: any) {
+    for (let i = 0, l = this._currentSong.lyrics.length; i < l; i++) {
+      if (currentTime > this._currentSong.lyrics[i][0]) {
+        this._currentSong.lyrics[i][2] = true;
+        this.nowPlayLrcIndex = i;
+        const scrollHeight = i > 3 ? (i - 2) * 34 : 0;
+        this.renderer2.setStyle(this.musicLrcRef, 'transform', 'translate(0px,-' + scrollHeight + 'px)');
+        this.renderer2.setStyle(this.musicLrcRef, 'transition', 'all 1s');
+      }
+    }
   }
 
   setPlaylistClass(value: boolean) {
@@ -41,5 +71,4 @@ export class PlayDetailComponent implements OnInit {
       }
     }
   }
-
 }
