@@ -52,7 +52,7 @@ export class ControlComponent implements OnInit, AfterContentInit {
       )
       .subscribe(res => {
         this.showPlaylist = res.showPlaylist;
-      })
+      });
   }
 
   toogleShowPlaylist() {
@@ -63,7 +63,6 @@ export class ControlComponent implements OnInit, AfterContentInit {
     this.audioRef = this.el.nativeElement.querySelector('.audio');
     const progress$ = fromEvent(this.audioRef, 'timeupdate').subscribe(v => {
       this.rate = this.audioRef.currentTime / this.audioRef.duration;
-      console.log(this.audioRef.duration);
     });
     const ended$ = fromEvent(this.audioRef, 'ended').subscribe(v => {
       this.nextSong();

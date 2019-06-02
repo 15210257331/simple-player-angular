@@ -1,0 +1,18 @@
+<div class="mv-wrap">
+    <div class="mv">
+        <h3 class="mv-title">MV分类</h3>
+
+        <div class="mv-classify">
+            <app-classify [data]="mvClassifyList" (changeClassify)="changeClassify($event)"></app-classify>
+        </div>
+        <div class="mv-list">
+            <div *ngFor="let item of mvList;" (click)="detail(item.id)">
+                <img src="{{item.cover || item.picUrl}}" alt="">
+                <div class="mask"></div>
+                <span class="playCount"><i class="iconfont icon-headset"></i>{{item.playCount | numberToWan}}</span>
+                <span class="play"><i class="iconfont icon-play1"></i></span>
+                <p>{{item.name}}</p>
+            </div>
+        </div>
+    </div>
+</div>

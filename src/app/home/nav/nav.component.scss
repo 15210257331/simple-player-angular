@@ -64,6 +64,10 @@
     }
     .nav-item {
         height: 25px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         line-height: 25px;
         font-size: 16px;
         color: black;

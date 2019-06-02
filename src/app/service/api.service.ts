@@ -6,6 +6,9 @@ const API = `/api`
 
 @Injectable()
 export class ApiService {
+
+  constructor(private http: HttpClient) {}
+
     // 登录
     login(body: any) {
         return this.http.get(`${API}/login/cellphone?phone=${body.phone}&password=${body.password}`);
@@ -19,12 +22,12 @@ export class ApiService {
       return this.http.get(`${API}/login/status`);
     }
     // 获取用户详情
-    getUserDetail(uid: string) {
-      return this.http.get(`${API}/user/detail?uid=${uid}`);
+    getUserDetail(userId: number) {
+      return this.http.get(`${API}/user/detail?uid=${userId}`);
     }
     // 获取用户歌单
-    getUserSongList(uid: string) {
-      return this.http.get(`${API}/user/playlist?uid=${uid}`);
+    getUserSongList(userId: string) {
+      return this.http.get(`${API}/user/playlist?uid=${userId}`);
     }
     // 新建歌单
     createSongList(name: string) {
@@ -34,19 +37,23 @@ export class ApiService {
     logout() {
       return this.http.get(`${API}/logout`);
     }
+    // 轮播图
     getBanner() {
         return this.http.get(`${API}/banner`);
     }
+    // 搜索
     searchMusic(keyword: string) {
         return this.http.get(`${API}/search?keywords=${keyword}`);
     }
+
+    // 搜索建议
+    searchSuggest(keyword: string) {
+        return this.http.get(`${API}/search/suggest?keywords=${keyword}`);
+    }
+
     // 歌单分类列表
     getCatlist() {
         return this.http.get(`${API}/playlist/catlist`);
-    }
-    // 热门歌单分类列表
-    getHotClassifyList() {
-        return this.http.get(`${API}/playlist/hot`);
     }
     // 推荐歌单
     getChosenList() {
@@ -125,29 +132,14 @@ export class ApiService {
     getSingerList(cat: any) {
         return this.http.get(`${API}/artist/list?cat=${cat}`);
     }
+
     // 某歌手详情
     getSingerDetail(id: any) {
         return this.http.get(`${API}/artists?id=${id}`);
     }
-    // 电台分类列表
-    getRadioClassifyList() {
-        return this.http.get(`${API}/dj/catelist`);
-    }
-    // 某一类别的电台下的列表
-    getRaioList(type: any) {
-        return this.http.get(`${API}/dj/recommend/type?type=${type}`);
-    }
-    // 获取mv
-    getMvList() {
-      return this.http.get(`${API}/mv/first`);
-    }
-    constructor(private http: HttpClient) {
-    }
-
-
 
     // 歌曲详情 (可传多个)
-    getSongDetail(ids: number) {
+    getSongDetail(ids: any) {
       return this.http.get(`${API}/song/detail?ids=${ids}`);
     }
 
@@ -155,10 +147,40 @@ export class ApiService {
     getSongUrl(id: number) {
       return this.http.get(`${API}/song/url?id=${id}`);
     }
-    
+
     // 歌曲歌词
     getSongLyric(id: number) {
       return this.http.get(`${API}/lyric?id=${id}`);
+    }
+
+    // 获取最新mv  1
+    getLatestMvList() {
+      return this.http.get(`${API}/mv/first`);
+    }
+
+    // 获取推荐mv 2
+    getReccomendMvList() {
+      return this.http.get(`${API}/personalized/mv`);
+    }
+
+    // 获取mv详情
+    getMvDetail(mvid: number) {
+      return this.http.get(`${API}/mv/detail?mvid=${mvid}`);
+    }
+
+    // 获取mv mp4 资源
+    getMvUrl(mvid: number) {
+      return this.http.get(`${API}/mv/url?id=${mvid}`);
+    }
+
+    // 喜欢该音乐
+    likeSong(songId: number) {
+      return this.http.get(`${API}/like?id=${songId}`);
+    }
+
+    // 我喜欢的音乐列表
+    myLikeSongList(userId: number) {
+      return this.http.get(`${API}/likelist?uid=${userId}`);
     }
 }
 

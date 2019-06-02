@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NzNotificationService } from 'ng-zorro-antd';
 import { finalize } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { LoadCurrentSong, AddToPlaylist, Appstate} from '../../../store';
+import { LoadCurrentSong, AddToPlaylist, Appstate, LikeSong} from '../../../store';
 
 @Component({
   selector: 'app-hot-detail',
@@ -51,7 +51,7 @@ export class HotDetailComponent implements OnInit {
       this.musicList = this.musicList.map(item => {
         item.dt = String(item.dt).substring(0,3);
         return item;
-      })
+      });
       this.listOverview = {
         name: res['playlist']['name'],
         description: res['playlist']['description'],
@@ -72,12 +72,11 @@ export class HotDetailComponent implements OnInit {
   playAll(event) {
     event.stopPropagation();
     this.loadingMusic = true;
-    let songArray = this.musicList.slice(0,20);
-    this.store.dispatch(new AddToPlaylist(songArray))
+    const songArray = this.musicList.slice(0, 20);
+    this.store.dispatch(new AddToPlaylist(songArray));
   }
 
-  collection(id: string) {
-
+  likeSong(data: any) {
+    this.store.dispatch(new LikeSong(data));
   }
-
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../../shared.module';
 import { SingerComponent } from '../singer/singer.component';
+import { SingerDetailComponent } from './singer-detail/singer-detail.component';
 
 
 const route: Routes = [
@@ -10,11 +11,16 @@ const route: Routes = [
       path: '',
       component: SingerComponent,
     },
+    {
+      path: 'detail',
+      component: SingerDetailComponent,
+    },
   ];
 
 @NgModule({
   declarations: [
-    SingerComponent
+    SingerComponent,
+    SingerDetailComponent
   ],
   imports: [
     CommonModule,

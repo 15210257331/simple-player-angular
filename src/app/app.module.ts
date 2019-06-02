@@ -13,14 +13,13 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers, effects } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
 import { AppComponent } from './app.component';
-import { NavComponent } from './home/nav/nav.component';
-import { HeaderComponent } from './home/header/header.component';
 import { ApiService } from './service/api.service';
-import { ControlModule } from './home/control/control.module';
 import { environment } from 'src/environments/environment';
 import { httpInterceptorProviders } from './service/interceptor';
+import { ControlModule } from './home/control/control.module';
+import { HeaderModule } from './home/header/header.module';
+import { NavModule } from './home/nav/nav.module';
 
 
 registerLocaleData(zh);
@@ -30,8 +29,6 @@ enableProdMode(); // 解决父组件检查完后 子组件有改变了父组件�
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
-    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +37,9 @@ enableProdMode(); // 解决父组件检查完后 子组件有改变了父组件�
     HttpClientModule,
     BrowserAnimationsModule,
     NgZorroAntdModule,
+    NavModule,
     ControlModule,
+    HeaderModule,
     // 注册全局的reducer和effects
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),

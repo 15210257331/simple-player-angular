@@ -29,22 +29,20 @@ export class LoginComponent implements OnInit {
   }
 
   login(data: any) {
-    // this.UserService.login(data).subscribe(res => {
-    //   if (res['result'] === true) {
-    //     this.modal.destroy({result: true});
-    //     this.message.success('登录成功', { nzDuration: 1000 });
-    //   } else {
-    //     this.message.error('密码或用户名错误！', { nzDuration: 1000 });
-    //   }
-    // }, error => {
-    //     this.message.error('登录失败', {nzDuration: 2000});
-    // });
+    this.apiService.login(data).subscribe(res => {
+      if (res['code'] === 200) {
+        this.modal.destroy({result: true});
+        this.message.success('登录成功', { nzDuration: 1000 });
+      } else {
+        this.message.error('密码或用户名错误！', { nzDuration: 1000 });
+      }
+    }, error => {
+        this.message.error('登录失败', {nzDuration: 2000});
+    });
   }
 
   cancel() {
     this.modal.destroy();
   }
-  register() {
-    this.router.navigate(['/register']);
-  }
+
 }

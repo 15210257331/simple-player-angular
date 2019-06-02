@@ -13,6 +13,7 @@ import { ClassifyComponent } from './components/classify/classify.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { BuildingComponent } from './components/building/building.component';
 import { TimePipe } from './directive/time.pipe';
+import { EmptyComponent } from './components/empty/empty.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { TimePipe } from './directive/time.pipe';
     SwitchComponent,
     ProgressComponent,
     LoadingComponent,
+    EmptyComponent,
     PageComponent,
     ClassifyComponent,
     NotfoundComponent,
@@ -44,6 +46,7 @@ import { TimePipe } from './directive/time.pipe';
     SwitchComponent,
     ProgressComponent,
     LoadingComponent,
+    EmptyComponent,
     PageComponent,
     ClassifyComponent,
     NotfoundComponent,

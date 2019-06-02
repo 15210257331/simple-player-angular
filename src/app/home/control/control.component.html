@@ -1,37 +1,33 @@
 <div class="music-player">
-  <audio class="audio" [src]="currentSong?.url" autoplay="autoplay"></audio>
-  <div class="music-player-left">
-    <i title="上一曲" (click)="preSong()" class="iconfont icon-previous"></i>
-    <i title="播放" (click)="togglePlayState()" style="font-size: 35px;" *ngIf="audioRef.paused"
-      class="iconfont icon-playcircle"></i>
-    <i title="暂停" (click)="togglePlayState()" style="font-size: 35px;" *ngIf="!audioRef.paused"
-      class="iconfont icon-Pause"></i>
-    <i title="下一曲" (click)="nextSong()" class="iconfont icon-next"></i>
-  </div>
-  <div class="music-player-center">
-    <div class="music-player-pic">
-      <div>
-        <i title="收缩" *ngIf="showDetail" (click)="showDetail = !showDetail" class="iconfont icon-down1"></i>
-        <i title="展开" *ngIf="!showDetail" (click)="showDetail = !showDetail" class="iconfont icon-up1"></i>
-      </div>
-      <img [src]="currentSong.songPic ? currentSong.songPic : 'assets/img/default-music-pic.jpg'" alt="">
+    <audio class="audio" [src]="currentSong?.url" autoplay="autoplay"></audio>
+    <div class="music-player-left">
+        <i title="上一曲" (click)="preSong()" class="iconfont icon-previous"></i>
+        <i title="播放" (click)="togglePlayState()" style="font-size: 35px;" *ngIf="audioRef.paused" class="iconfont icon-playcircle"></i>
+        <i title="暂停" (click)="togglePlayState()" style="font-size: 35px;" *ngIf="!audioRef.paused" class="iconfont icon-Pause"></i>
+        <i title="下一曲" (click)="nextSong()" class="iconfont icon-next"></i>
     </div>
-    <div class="progress-info">
-      <span *ngIf="currentSong._id"
-        class="progress-info-left">{{currentSong.songName + '/' + currentSong.singerName}}</span>
-      <span *ngIf="!currentSong._id" class="progress-info-left">脑残音乐,无所畏惧</span>
-      <span *ngIf="currentSong._id"
-        class="progress-info-right">{{audioRef?.currentTime | formatTime}}/{{audioRef?.duration | formatTime}}</span>
-      <span *ngIf="!currentSong._id" class="progress-info-right">00:00/00:00</span>
-      <app-progress [rate]="rate" (changeRate)="changeProgressRate($event)"></app-progress>
+    <div class="music-player-center">
+        <div class="music-player-pic">
+            <div>
+                <i title="收缩" *ngIf="showDetail" (click)="showDetail = !showDetail" class="iconfont icon-down1"></i>
+                <i title="展开" *ngIf="!showDetail" (click)="showDetail = !showDetail" class="iconfont icon-up1"></i>
+            </div>
+            <img [src]="currentSong.songPic ? currentSong.songPic : 'assets/img/default-music-pic.jpg'" alt="">
+        </div>
+        <div class="progress-info">
+            <span *ngIf="currentSong._id" class="progress-info-left">{{currentSong.songName + '/' + currentSong.singerName}}</span>
+            <span *ngIf="!currentSong._id" class="progress-info-left">脑残音乐,无所畏惧</span>
+            <span *ngIf="currentSong._id" class="progress-info-right">{{audioRef?.currentTime | formatTime}}/{{audioRef?.duration | formatTime}}</span>
+            <span *ngIf="!currentSong._id" class="progress-info-right">00:00/00:00</span>
+            <app-progress [rate]="rate" (changeRate)="changeProgressRate($event)"></app-progress>
+        </div>
     </div>
-  </div>
-  <div class="music-player-right">
-    <i title="循环播放" class="iconfont icon-repeat"></i>
-    <i title="评论" class="iconfont icon-comment"></i>
-    <i title="收藏" class="iconfont icon-heart1" (click)="collectionMusic(currentSong._id)"></i>
-    <i title="播放列表" class="iconfont icon-list" (click)="toogleShowPlaylist()"></i>
-  </div>
+    <div class="music-player-right">
+        <i title="循环播放" class="iconfont icon-repeat"></i>
+        <i title="音量" class="iconfont icon-voiceon"></i>
+        <i title="收藏" class="iconfont icon-heart1" (click)="collectionMusic(currentSong._id)"></i>
+        <i title="播放列表" class="iconfont icon-play-list-fill" (click)="toogleShowPlaylist()"></i>
+    </div>
 </div>
 
 <app-play-detail [show]="showDetail" [nowPlayTime]="audioRef.currentTime" [currentSong]="currentSong"></app-play-detail>

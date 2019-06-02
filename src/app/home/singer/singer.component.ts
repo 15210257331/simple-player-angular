@@ -50,6 +50,6 @@ export class SingerComponent implements OnInit {
   }
 
   detail(id: string) {
-    this.router.navigate(['/singer-detail'], { queryParams: { id: id } });
+    this.router.navigate(['/singer/detail'], { queryParams: { id: id } });
   }
 }

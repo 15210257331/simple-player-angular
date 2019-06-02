@@ -2,19 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../../shared.module';
-import { RankComponent } from '../rank/rank.component';
-
+import { VideoComponent } from './video.component';
+import { VideoDetailComponent } from './video-detail/video-detail.component';
 
 const route: Routes = [
     {
       path: '',
-      component: RankComponent,
+      component: VideoComponent,
+    },
+    {
+      path: 'detail',
+      component: VideoDetailComponent,
     },
   ];
 
 @NgModule({
   declarations: [
-    RankComponent,
+    VideoComponent,
+    VideoDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -24,4 +29,4 @@ const route: Routes = [
   exports: [
   ],
 })
-export class RankModule { }
+export class VideoModule { }

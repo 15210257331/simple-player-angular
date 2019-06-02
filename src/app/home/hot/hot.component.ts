@@ -58,7 +58,7 @@ export class HotComponent implements OnInit {
   }
 
   changeClassify(code: number) {
-
+    console.log(code);
   }
 
 }

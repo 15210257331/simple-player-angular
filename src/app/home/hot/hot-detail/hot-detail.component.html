@@ -1,56 +1,55 @@
 <div class="detail">
     <header *ngIf="listOverview" class="detail-header">
-      <img src="{{listOverview?.coverImgUrl}}" alt="">
-      <div>
-        <h3>{{listOverview?.name}}</h3>
-        <h6>
-          <span *ngFor="let item of listOverview?.tags">{{item}}</span>
-        </h6>
-        <p>{{listOverview?.description}}</p>
+        <img src="{{listOverview?.coverImgUrl}}" alt="">
         <div>
-          <button (click)="playAll($event)">
+            <h3>{{listOverview?.name}}</h3>
+            <h6>
+                <span *ngFor="let item of listOverview?.tags">{{item}}</span>
+            </h6>
+            <p>{{listOverview?.description}}</p>
+            <div>
+                <button (click)="playAll($event)">
             <i class="iconfont icon-play3"></i>
             <span *ngIf="loadingMusic" class="mask"><i class="iconfont icon-loading1"></i></span>
             播放全部
           </button>
-          <button><i class="iconfont icon-heart1"></i>收藏</button>
-          <button><i class="iconfont icon-download"></i>下载</button>
-          <button><i class="iconfont icon-share-"></i>分享</button>
+                <button><i class="iconfont icon-heart1"></i>收藏</button>
+                <button><i class="iconfont icon-download"></i>下载</button>
+                <button><i class="iconfont icon-share-"></i>分享</button>
+            </div>
         </div>
-      </div>
     </header>
-  
+
     <section class="detail-list">
-      <table>
-        <thead>
-          <tr>
-            <th width="50%">歌曲</th>
-            <th width="15%">歌手</th>
-            <th width="25%">专辑</th>
-            <th width="10%">时长</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of musicList; let i = index;">
-            <td>
-              <i (click)="collection(item.id)" style="font-size: 20px;" class="iconfont icon-heart1"></i>
-              {{item.name}}
-              <i title="添加到播放列表" (click)="addToPlayList(item)" style="float: right; font-size: 22px; margin-left: 10px;" class="iconfont icon-plus-circle"></i>
-              <i title="播放" (click)="playMusic(item)" style="float: right; font-size: 28px;" class="iconfont icon-play1"></i>
-            </td>
-            <td>
-              {{item.ar[0]['name']}}
-            </td>
-            <td>
-              {{item.al['name']}}
-            </td>
-            <td>
-              {{item.dt | formatTime}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <table>
+            <thead>
+                <tr>
+                    <th width="50%">歌曲</th>
+                    <th width="15%">歌手</th>
+                    <th width="25%">专辑</th>
+                    <th width="10%">时长</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of musicList; let i = index;">
+                    <td>
+                        {{item.name}}
+                        <i title="添加到播放列表" (click)="addToPlayList(item)" style="float: right; font-size: 22px; margin-left: 10px;" class="iconfont icon-plus-circle"></i>
+                        <i title="播放" (click)="playMusic(item)" style="float: right; font-size: 28px;" class="iconfont icon-play1"></i>
+                        <i title="喜欢该音乐" (click)="likeSong(item)" style="float: right; font-size: 20px;" class="iconfont icon-heart1"></i>
+                    </td>
+                    <td>
+                        {{item.ar[0]['name']}}
+                    </td>
+                    <td>
+                        {{item.al['name']}}
+                    </td>
+                    <td>
+                        {{item.dt | formatTime}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </section>
     <app-loading [loadingDone]="loadingDone" [tip]="'正在加载中'"></app-loading>
-  </div>
-  
+</div>

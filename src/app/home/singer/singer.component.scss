@@ -6,17 +6,17 @@
         letter-spacing: 4px;
         text-align: left;
         margin: 0 auto;
-        width: 94%;
+        width: 96%;
     }
     .singer-classify {
-        width: 94%;
+        width: 96%;
         margin: 20px auto;
     }
     .singer-list {
-        width: 94%;
+        width: 96%;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
         margin: 20px auto;
@@ -29,7 +29,7 @@
             justify-content: space-around;
             align-items: center;
             background-color: #F0F0F0;
-            margin: 10px 0;
+            margin: 0 20px 15px 0;
             cursor: pointer;
             img {
                 position: relative;
@@ -43,11 +43,11 @@
                 margin-bottom: 0;
             }
         }
-        .singer-list-item:hover > img {
+        .singer-list-item:hover>img {
             transform: rotate(-30deg);
         }
-        .singer-list-item:hover > p {
+        .singer-list-item:hover>p {
             color: #31c27c;
         }
-    }    
+    }
 }

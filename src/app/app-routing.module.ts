@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SearchDetailComponent } from './home/header/search-detail/search-detail.component';
 
 const routes: Routes = [
     {
@@ -18,13 +19,18 @@ const routes: Routes = [
       canLoad: []
     },
     {
-      path: 'rank',
-      loadChildren: './home/rank/rank.module#RankModule',
+      path: 'video',
+      loadChildren: './home/video/video.module#VideoModule',
       canLoad: []
     },
     {
-      path: 'mv',
-      loadChildren: './home/mv/mv.module#MvModule',
+      path: 'like',
+      loadChildren: './home/like/like.module#LikeModule',
+      canLoad: []
+    },
+    {
+      path: 'search/detail',
+      component: SearchDetailComponent,
       canLoad: []
     },
   ];

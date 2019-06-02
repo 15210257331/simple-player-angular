@@ -1,6 +1,11 @@
-<div class="user-info">
+<div *ngIf="!userInfo" class="user-info">
     <img src="assets/img/default-music-pic.jpg" alt="头像">
     <h3 (click)="openLogin()">立即登录</h3>
+</div>
+
+<div *ngIf="userInfo" class="user-info">
+    <img [src]="userInfo.profile.avatarUrl" alt="头像">
+    <h3>{{userInfo.profile.nickname}}</h3>
 </div>
 
 <div class="nav-wrap">
@@ -9,34 +14,18 @@
         <span><i class="iconfont icon-musicfill"></i>热门音乐</span>
     </p>
     <p class="nav-item" routerLinkActive="active" [routerLink]="['/singer']">
-        <span><i class="iconfont icon-radio-outline"></i>歌手</span>
+        <span><i class="iconfont icon-Men"></i>歌手</span>
     </p>
-    <p class="nav-item" routerLinkActive="active" [routerLink]="['/rank']">
-        <span><i class="iconfont icon-video"></i>排行榜</span>
+    <p class="nav-item" routerLinkActive="active" [routerLink]="['/video']">
+        <span><i class="iconfont icon-video"></i>视频</span>
     </p>
-    <p class="nav-item" routerLinkActive="active" [routerLink]="['/mv']">
-        <span><i class="iconfont icon-radio-outline"></i>mv</span>
-    </p>
-
-    <h3 class="nav-title">我的音乐</h3>
-    <p class="nav-item" routerLinkActive="active" [routerLink]="['/mylike']">
+    <p class="nav-item" routerLinkActive="active" [routerLink]="['/like']">
         <span><i style="color: #ff4400" class="iconfont icon-heart1"></i>我喜欢的</span>
-    </p>
-    <p class="nav-item">
-        <span><i class="iconfont icon-history"></i>播放历史</span>
     </p>
 
     <h3 class="nav-title">我的歌单</h3>
-    <p class="nav-item" routerLinkActive="active" [routerLink]="['/mylike']">
-        <span><i style="color: #ff4400" class="iconfont icon-heart1"></i>我喜欢的</span>
-    </p>
-    <p class="nav-item">
-        <span><i class="iconfont icon-history"></i>播放历史</span>
+    <p *ngFor="let item of userSongList" routerLinkActive="active" [routerLink]="['/songlist/:id']" class="nav-item">
+        <span><i style="color: #ff4400" class="iconfont icon-Music-Note"></i>{{item.name}}</span>
     </p>
 
-    <!-- <h3 class="nav-title">我的歌单 <i (click)="showSongListEdit = true;" class="iconfont icon-plus2"></i></h3>
-    <p class="nav-item songList" [title]="item.name" *ngFor="let item of userStore.snapshot.songList; let i = index;">
-        <span><i class="iconfont icon-musicfill"></i>{{item.name}}</span>
-    </p>
-    <p class="nav-item" *ngIf="showSongListEdit"><input style="padding-left: 10px;" class="form-control form-control-sm" type="text" name="songListName" (keyup.enter)="newSongList()" [(ngModel)]="songListName" placeholder="请输入歌单名称"></p> -->
 </div>

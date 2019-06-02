@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RankComponent } from './rank.component';
+import { SingerDetailComponent } from './singer-detail.component';
 
-describe('RankComponent', () => {
-  let component: RankComponent;
-  let fixture: ComponentFixture<RankComponent>;
+describe('SingerDetailComponent', () => {
+  let component: SingerDetailComponent;
+  let fixture: ComponentFixture<SingerDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RankComponent ]
+      declarations: [ SingerDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RankComponent);
+    fixture = TestBed.createComponent(SingerDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -59,8 +59,8 @@ export class PlayListComponent implements OnInit {
   }
 
   closePlaylist() {
-    // this.store.dispatch(new ToogleShowPlaylist(false));
-    // this.setPlaylistClass(false);
+    this.store.dispatch(new ToogleShowPlaylist(false));
+    this.setPlaylistClass(false);
   }
 
   clearPlaylist() {

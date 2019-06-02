@@ -1,16 +1,20 @@
-import { ActionReducerMap, createSelector, createFeatureSelector } from '@ngrx/store';
+import { ActionReducerMap } from '@ngrx/store';
 import { playlistReducer, PlaylistState } from './playlist.reducer';
 import { GlobalState, globalReducer } from './global.reducer';
+import { UserState, userReducer } from './user.reducer';
 
 
-//state 一个应用级的总的状态(单一状态树)
+// state 一个应用级的总的状态(单一状态树)
 export interface Appstate {
-    playlistState: PlaylistState,
-    globalState: GlobalState
+    playlistState: PlaylistState;
+    globalState: GlobalState;
+    userState: UserState;
 }
 
-//将状态中的每一个状态注册相应的reducer
+// 将状态中的每一个状态注册相应的reducer
 export const reducers: ActionReducerMap<Appstate> = {
     playlistState: playlistReducer,
-    globalState: globalReducer
-}
+    globalState: globalReducer,
+    userState: userReducer,
+};
+
