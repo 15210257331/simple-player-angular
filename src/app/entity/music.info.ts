@@ -1,6 +1,6 @@
 
 export interface MusicInfo {
-    _id?: string;
+    id?: string;
     songName?: string;
     songPic?: string;
     songDesc?: string;
@@ -11,7 +11,7 @@ export interface MusicInfo {
 }
 
 export interface MyMusicListInfo {
-    _id?: string;
+    id?: string;
     name: string;
     description?: string;
     songs: MusicInfo[];

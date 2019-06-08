@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ElementRef, Renderer2, HostListener } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Appstate, ClearPlaylist, LoadCurrentSong, DeleteSongFromPlaylist } from '../../../store';
+import { Appstate, ClearPlaylist, LoadCurrentSong, DeleteSongFromPlaylist, LikeSong } from '../../../store';
 import { ToogleShowPlaylist } from '../../../store/actions/global.action';
 
 @Component({
@@ -32,7 +32,7 @@ export class PlayListComponent implements OnInit {
 
   @Input()
   set index(value: number) {
-    if (value) {
+    if (value !== null || value !== -1 || value !== undefined) {
       this._index = value;
     }
   }
@@ -71,8 +71,8 @@ export class PlayListComponent implements OnInit {
     this.store.dispatch(new LoadCurrentSong(item));
   }
 
-  collectionSong() {
-
+  likeSong(data: any) {
+    this.store.dispatch(new LikeSong(data));
   }
 
   downloadSong() {

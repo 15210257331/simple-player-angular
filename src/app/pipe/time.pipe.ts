@@ -12,6 +12,9 @@ export class TimePipe implements PipeTransform {
     // 接受以秒为单位的值
     transform(value: any, ...args: any[]): string {
         if (value) {
+            if(String(value).length > 3) {
+                value = String(value).substring(0,3);
+            }
             let minstr, seconstr;
             const minutes = Math.floor(parseInt(value, 10) / 60);
             if (minutes < 10) {

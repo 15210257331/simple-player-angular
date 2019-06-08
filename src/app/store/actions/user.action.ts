@@ -4,6 +4,7 @@ export enum UserActionTypes {
     LoadUserInfo = 'LoadUserInfo',
     LoadUserInfoSuccess = 'LoadUserInfoSuccess',
     LoadUserInfoError = 'LoadUserInfoError',
+    Logout = 'Logout',
     LikeSong = 'LikeSong',
     LikeSongSuccess = 'LikeSongSuccess',
     LikeSongError = 'LikeSongError',
@@ -22,6 +23,11 @@ export class LoadUserInfoSuccess implements Action {
 export class LoadUserInfoError implements Action {
     readonly type = UserActionTypes.LoadUserInfoError;
     constructor(public payload: any) {}
+}
+
+export class Logout implements Action {
+    readonly type = UserActionTypes.Logout;
+    constructor() {}
 }
 
 export class LikeSong implements Action {

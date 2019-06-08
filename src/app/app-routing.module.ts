@@ -33,6 +33,11 @@ const routes: Routes = [
       component: SearchDetailComponent,
       canLoad: []
     },
+    {
+      path: 'songlist/:id',
+      loadChildren: './home/song-list/song-list.module#SongListModule',
+      canLoad: []
+    },
   ];
 
 @NgModule({

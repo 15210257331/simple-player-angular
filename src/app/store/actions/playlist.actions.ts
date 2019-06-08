@@ -38,7 +38,7 @@ export class AddToPlaylist implements Action {
 
 export class DeleteSongFromPlaylist implements Action {
     readonly type = PlaylistActionTypes.DeleteSongFromPlaylist;
-    constructor(public payload: any) { };
+    constructor(public payload: number) { }; // 传index
 }
 
 export class ClearPlaylist implements Action {

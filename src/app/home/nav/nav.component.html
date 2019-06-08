@@ -1,31 +1,34 @@
 <div *ngIf="!userInfo" class="user-info">
-    <img src="assets/img/default-music-pic.jpg" alt="头像">
-    <h3 (click)="openLogin()">立即登录</h3>
+  <img src="assets/img/default-music-pic.jpg" alt="头像">
+  <h3 (click)="openLogin()">立即登录</h3>
 </div>
 
 <div *ngIf="userInfo" class="user-info">
-    <img [src]="userInfo.profile.avatarUrl" alt="头像">
-    <h3>{{userInfo.profile.nickname}}</h3>
+  <img [src]="userInfo.profile.avatarUrl" alt="头像">
+  <h4>
+    {{userInfo.profile.nickname}}
+    <span (click)="logout()">退出</span>
+  </h4>
 </div>
 
 <div class="nav-wrap">
-    <h3 class="nav-title">在线音乐</h3>
-    <p class="nav-item" routerLinkActive="active" [routerLink]="['/hot']">
-        <span><i class="iconfont icon-musicfill"></i>热门音乐</span>
-    </p>
-    <p class="nav-item" routerLinkActive="active" [routerLink]="['/singer']">
-        <span><i class="iconfont icon-Men"></i>歌手</span>
-    </p>
-    <p class="nav-item" routerLinkActive="active" [routerLink]="['/video']">
-        <span><i class="iconfont icon-video"></i>视频</span>
-    </p>
-    <p class="nav-item" routerLinkActive="active" [routerLink]="['/like']">
-        <span><i style="color: #ff4400" class="iconfont icon-heart1"></i>我喜欢的</span>
-    </p>
+  <h3 class="nav-title">在线音乐</h3>
+  <p class="nav-item" routerLinkActive="active" [routerLink]="['/hot']">
+    <span><i class="iconfont icon-musicfill"></i>热门音乐</span>
+  </p>
+  <p class="nav-item" routerLinkActive="active" [routerLink]="['/singer']">
+    <span><i class="iconfont icon-Men"></i>歌手</span>
+  </p>
+  <p class="nav-item" routerLinkActive="active" [routerLink]="['/video']">
+    <span><i class="iconfont icon-video"></i>视频</span>
+  </p>
+  <p class="nav-item" routerLinkActive="active" [routerLink]="['/like']">
+    <span><i style="color: #ff4400;" class="iconfont icon-heart1"></i>我喜欢的</span>
+  </p>
 
-    <h3 class="nav-title">我的歌单</h3>
-    <p *ngFor="let item of userSongList" routerLinkActive="active" [routerLink]="['/songlist/:id']" class="nav-item">
-        <span><i style="color: #ff4400" class="iconfont icon-Music-Note"></i>{{item.name}}</span>
-    </p>
+  <h3 class="nav-title">我的歌单</h3>
+  <p *ngFor="let item of userSongList;" routerLinkActive="active" [routerLink]="['/songlist', item.id]" class="nav-item">
+    <span><i style="color: #ff4400" class="iconfont icon-Music-Note"></i>{{item.name}}</span>
+  </p>
 
 </div>

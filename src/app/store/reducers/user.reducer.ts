@@ -9,7 +9,7 @@ export interface UserAction extends Action {
 // 用户信息
 export interface UserState {
     userInfo: any;
-    userSongList: any[];
+    userSongList: any[]; // 用户的歌单
     likeList: any[];
 }
 
@@ -33,8 +33,14 @@ export function userReducer(state: UserState = initialState, action: UserAction)
                 userSongList: [],
                 likeList: [],
             };
+        case UserActionTypes.Logout:
+            return {
+                userInfo: null,
+                userSongList: [],
+                likeList: [],
+            };
         case UserActionTypes.LikeSongSuccess:
-            state.likeList = [action.payload, ...state.likeList,];
+            state.likeList = [action.payload, ...state.likeList];
             return state;
         case UserActionTypes.LikeSongError:
             return state;

@@ -1,35 +1,36 @@
 <div class="playlist-wrap" (blur)="closePlaylist()" tabindex="0">
-    <header>
-        <h2>播放列表</h2>
-        <p>
-            <span>共{{_playlist.length}}首歌</span>
-            <span (click)="clearPlaylist()">
+  <header>
+    <h2>播放列表</h2>
+    <p>
+      <span>共{{_playlist.length}}首歌</span>
+      <span (click)="clearPlaylist()">
         <i title="清空" class="iconfont icon-trash-"></i>
         <span style="font-size: 14px;">清空</span>
-            </span>
-        </p>
-    </header>
+      </span>
+    </p>
+  </header>
 
-    <div class="playlist-list">
-        <app-empty *ngIf="_playlist.length === 0"></app-empty>
-        <li *ngFor="let item of _playlist; let i = index;">
-            <div class="item-left">
-                <img [src]="item?.al?.picUrl" alt="歌曲图片">
-                <div [ngClass]="{'playNow': _index === i}">
-                    <p>{{item['name']}}</p>
-                    <p>{{item.ar[0]['name']}}</p>
-                </div>
-                <img *ngIf="_index === i" class="gif" [src]="'assets/img/play.gif'" alt="">
-            </div>
-            <div class="item-right">
-                <p>
-                    <i title="播放" (click)="playSong(item)" class="iconfont icon-play3"></i>
-                    <i title="收藏" (click)="collectionSong(item)" class="iconfont icon-heart1"></i>
-                    <i title="下载" (click)="downloadSong(item)" class="iconfont icon-download"></i>
-                    <i title="删除" (click)="deleteSong(item)" class="iconfont icon-trash-"></i>
-                </p>
-            </div>
-            <span class="time">{{item.dt | formatTime}}</span>
-        </li>
-    </div>
+  <div class="playlist-list">
+    <app-empty *ngIf="_playlist.length === 0"></app-empty>
+    <li *ngFor="let item of _playlist; let i = index;">
+      <div class="item-left">
+        <img [src]="item.al ? item.al.picUrl : item.artists[0].img1v1Url" alt="歌曲图片">
+        <div [ngClass]="{'playNow': _index === i}">
+          <p [title]="item['name']">{{item['name']}}</p>
+          <p [title]="item.ar ? item.ar[0]['name'] : item.artists[0]['name']">
+            {{item.ar ? item.ar[0]['name'] : item.artists[0]['name']}}</p>
+        </div>
+        <img class="gif" *ngIf="_index === i" [src]="'assets/img/play.gif'" alt="">
+      </div>
+      <div class="item-right">
+        <p>
+          <i title="播放" (click)="playSong(item)" class="iconfont icon-play3"></i>
+          <i title="喜欢" style="font-size: 20px;" (click)="likeSong(item)" class="iconfont icon-heart1"></i>
+          <i title="下载" (click)="downloadSong(item)" class="iconfont icon-download"></i>
+          <i title="删除" (click)="deleteSong(i)" class="iconfont icon-trash-"></i>
+        </p>
+      </div>
+      <span class="time">{{item.dt | formatTime}}</span>
+    </li>
+  </div>
 </div>

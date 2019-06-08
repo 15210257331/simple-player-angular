@@ -1,3 +1,5 @@
+@import '../../../../styles.scss';
+
 .song-detail-wrap {
   position: absolute;
   top: 100%;
@@ -17,9 +19,9 @@
 
   .song-detail {
     width: 1200px;
-    height: 700px;
+    height: 600px;
     min-width: 1000px;
-    min-height: 700px;
+    min-height: 600px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,8 +47,9 @@
         align-items: center;
         margin: 0 auto;
         i {
-          color: black;
+          color:$baseColor;
           font-size: 30px;
+          cursor: pointer;
         }
       }
     }
@@ -65,7 +68,7 @@
       }
       h4 {
         height: 20px;
-        margin-bottom: 20px;
+        margin: 10px 0 20px 0;
       }
       .music-lrc-wrap {
         width: 100%;

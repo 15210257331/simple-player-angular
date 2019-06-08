@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, ElementRef, Renderer2, HostListener } from '@angular/core';
 import { fromEvent } from 'rxjs';
+import { Appstate, LikeSong } from '../../../store';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class PlayDetailComponent implements OnInit {
 
   musicLrcRef: any;
 
-  _currentSong: any;
+  _currentSong: any = null;
 
   nowPlayLrcIndex: number;
 
@@ -24,23 +26,24 @@ export class PlayDetailComponent implements OnInit {
     }
   }
 
-  @Input() 
+  @Input()
   set currentSong(value: any) {
-    if(value) {
+    if (value) {
       this._currentSong = value;
     }
   }
 
-  @Input() 
+  @Input()
   set nowPlayTime(value: any) {
-    if(value) {
+    if (value) {
       this.setSongLyricsClass(value);
     }
   }
-  
+
   constructor(
     private el: ElementRef,
-    private renderer2: Renderer2
+    private renderer2: Renderer2,
+    private store: Store<Appstate>
   ) { }
 
   ngOnInit() {
@@ -61,7 +64,7 @@ export class PlayDetailComponent implements OnInit {
   }
 
   setPlaylistClass(value: boolean) {
-    if(this.detailElement) {
+    if (this.detailElement) {
       if (value === true) {
         this.renderer2.setStyle(this.detailElement, 'top', '0');
         this.renderer2.setStyle(this.detailElement, 'bottom', '80px');
@@ -70,5 +73,19 @@ export class PlayDetailComponent implements OnInit {
         this.renderer2.setStyle(this.detailElement, 'bottom', '0');
       }
     }
+  }
+
+  likeSong(data: any) {
+    this.store.dispatch(new LikeSong(data));
+  }
+
+  downloadSong(data: any) {
+    const a = document.createElement('a');
+    a.href = data.url;
+    a.style.display = 'none';
+    a.download = `${data.name}`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   }
 }

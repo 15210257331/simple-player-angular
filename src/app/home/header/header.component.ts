@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit {
 
   userInfoDetail: any = null;
 
+  suggestList: any[] =  [];
+
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -36,14 +38,15 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/search/detail'], {queryParams: {keyword: this.keyword}});
   }
 
-  searchSuggest() {
-    // console.log(121212);
-    // if (!this.keyword) {
-    //   return;
-    // }
-    // this.apiService.searchSuggest(this.keyword).subscribe(res => {
-    //   console.log(res);
-    // });
+  searchSuggest(event: any) {
+    if (!this.keyword) {
+      this.suggestList = [];
+      return;
+    }
+    this.apiService.searchSuggest(this.keyword).subscribe(res => {
+      this.suggestList = [].concat(res.result.songs).concat(res.result.albums).concat(res.result.artists);
+      console.log(this.suggestList);
+    });
   }
 
   back() {
@@ -56,5 +59,11 @@ export class HeaderComponent implements OnInit {
 
   refresh() {
     window.location.reload();
+  }
+
+  selectSuggestion(data: string) {
+    this.keyword = data;
+    this.searchMusic();
+    this.suggestList = [];
   }
 }

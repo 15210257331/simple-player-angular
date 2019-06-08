@@ -3,6 +3,8 @@ import { ApiService } from '../../service/api.service';
 import { Store } from '@ngrx/store';
 import { Appstate, LoadCurrentSong } from '../../store';
 import { map } from 'rxjs/operators';
+import { NzMessageService } from 'ng-zorro-antd';
+import { MessageConstant } from '../../constant';
 
 @Component({
   selector: 'app-like',
@@ -15,7 +17,8 @@ export class LikeComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private store: Store<Appstate>
+    private store: Store<Appstate>,
+    private message: NzMessageService,
   ) { }
 
   ngOnInit() {
@@ -24,6 +27,9 @@ export class LikeComponent implements OnInit {
       map(data => data.userState)
     )
     .subscribe(res => {
+      if(!res.userInfo) {
+        // this.message.success(MessageConstant.pleaseLogin);
+      }
       if (res.likeList.length > 0) {
         const ids = res.likeList.join(',');
         this.apiService.getSongDetail(ids).subscribe(res => {

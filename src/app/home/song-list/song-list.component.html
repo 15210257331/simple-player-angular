@@ -9,7 +9,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of likeList; let i = index;">
+                <tr *ngFor="let item of songList; let i = index;">
                     <td>
                         {{item.name}}
                         <i (click)="playSong(item)" style="float: right; font-size: 28px;" class="iconfont icon-play1"></i>
@@ -25,6 +25,6 @@
                 </tr>
             </tbody>
         </table>
-        <app-empty *ngIf="likeList.length === 0"></app-empty>
+        <app-empty *ngIf="songList.length === 0"></app-empty>
     </section>
 </div>

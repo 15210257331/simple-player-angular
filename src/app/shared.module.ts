@@ -8,12 +8,14 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { PageComponent } from './components/page/page.component';
 import { RouterModule } from '@angular/router';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { NumberPipe } from './directive/number.pipe';
+import { NumberPipe } from './pipe/number.pipe';
 import { ClassifyComponent } from './components/classify/classify.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { BuildingComponent } from './components/building/building.component';
-import { TimePipe } from './directive/time.pipe';
+import { TimePipe } from './pipe/time.pipe';
 import { EmptyComponent } from './components/empty/empty.component';
+import { DebounceDirective } from './directive/debounce.directive';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { EmptyComponent } from './components/empty/empty.component';
     BuildingComponent,
     NumberPipe,
     TimePipe,
+    DebounceDirective,
   ],
   imports: [
     CommonModule,
@@ -52,7 +55,8 @@ import { EmptyComponent } from './components/empty/empty.component';
     NotfoundComponent,
     BuildingComponent,
     NumberPipe,
-    TimePipe
+    TimePipe,
+    DebounceDirective
   ]
 })
 export class SharedModule { }

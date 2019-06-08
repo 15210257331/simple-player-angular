@@ -3,7 +3,7 @@ import { ApiService } from '../../../service/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { Appstate, LoadCurrentSong, AddToPlaylist } from '../../../store';
+import { Appstate, LoadCurrentSong, AddToPlaylist, LikeSong } from '../../../store';
 
 @Component({
   selector: 'app-singer-detail',
@@ -68,14 +68,13 @@ export class SingerDetailComponent implements OnInit {
   }
 
   playAll(event) {
-    event.stopPropagation();
-    this.loadingMusic = true;
-    const songArray = this.musicList.slice(0, 20);
-    this.store.dispatch(new AddToPlaylist(songArray));
+    // event.stopPropagation();
+    // this.loadingMusic = true;
+    // const songArray = this.musicList.slice(0, 20);
+    // this.store.dispatch(new AddToPlaylist(songArray));
   }
 
-  collection(id: string) {
-
+  lickSong(data: any) {
+    this.store.dispatch(new LikeSong(data));
   }
-
 }

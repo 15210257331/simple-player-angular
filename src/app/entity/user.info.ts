@@ -1,6 +1,6 @@
 
 export interface UserInfo {
-    _id?: string;
+    id?: string;
     userName: string;
     nickname: string;
     desc: string;

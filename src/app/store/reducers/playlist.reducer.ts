@@ -9,7 +9,7 @@ export interface PlaylistAction extends Action {
 
 // 每首歌的详情
 export interface SongDetail {
-    _id: string,
+    id: string,
     songName: string,
     songPic: 'assets/img/default-music-pic.jpg',
     songDesc: string,
@@ -22,13 +22,14 @@ export interface SongDetail {
 // 播放列表接口
 export interface PlaylistState {
     playlist: any[],
-    currentSong: SongDetail
+    currentSong: SongDetail,
+    currentIndex: number,
 }
 
 export const initialState: PlaylistState = {
     playlist: [],
     currentSong: {
-        _id: '',
+        id: '',
         songName: '',
         songPic: 'assets/img/default-music-pic.jpg',
         songDesc: '',
@@ -36,7 +37,8 @@ export const initialState: PlaylistState = {
         url: '',
         lyrics: [],
         additional: ''
-    }
+    },
+    currentIndex: -1,
 };
 
 export function playlistReducer(state: PlaylistState = initialState, action: PlaylistAction) {
@@ -44,7 +46,7 @@ export function playlistReducer(state: PlaylistState = initialState, action: Pla
         case PlaylistActionTypes.LoadCurrentSongSuccess:
             const [songInfo, songUrl, songLyrics] = action.payload.currentSongDetail;
             state.currentSong = { // 一定要这么写不能进行属性赋值
-                _id: songInfo['songs'][0]['id'],
+                id: songInfo['songs'][0]['id'],
                 songName: songInfo['songs'][0]['name'],
                 songPic: songInfo['songs'][0]['al']['picUrl'],
                 songDesc: songInfo['songs'][0]['name'],
@@ -57,6 +59,10 @@ export function playlistReducer(state: PlaylistState = initialState, action: Pla
             if (playlist.indexOf(action.payload.currentSong.id) < 0) {
                 state.playlist = [...state.playlist, action.payload.currentSong];
             }
+            const newPlaylist = state.playlist.map(item => item.id);
+            state.currentIndex = newPlaylist.indexOf(action.payload.currentSong.id);
+            return state;
+        case PlaylistActionTypes.LoadCurrentSongError:
             return state;
         case PlaylistActionTypes.AddToPlaylist:
             const arr1 = state.playlist.map(item => item.id);
@@ -65,12 +71,27 @@ export function playlistReducer(state: PlaylistState = initialState, action: Pla
             }
             return state;
         case PlaylistActionTypes.DeleteSongFromPlaylist:
+            let arr = state.playlist.map(item => item.id);
+            if (action.payload === state.currentIndex) {
+                state.currentIndex = -1;
+                state.currentSong = {
+                    id: '',
+                    songName: '',
+                    songPic: 'assets/img/default-music-pic.jpg',
+                    songDesc: '',
+                    singerName: '',
+                    url: '',
+                    lyrics: [],
+                    additional: ''
+                };
+            }
             state.playlist.splice(action.payload, 1);
             return state;
         case PlaylistActionTypes.ClearPlaylist:
             state.playlist = [];
+            state.currentIndex = -1;
             state.currentSong = {
-                _id: '',
+                id: '',
                 songName: '',
                 songPic: 'assets/img/default-music-pic.jpg',
                 songDesc: '',

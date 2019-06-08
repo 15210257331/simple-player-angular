@@ -3,21 +3,24 @@
     <div class="song-detail-cover">
       <img alt="专辑图片" [src]="_currentSong?.songPic ? _currentSong?.songPic : 'assets/img/default-music-pic.jpg'">
       <p>
-        <i title="循环播放" class="iconfont icon-repeat"></i>
-        <i title="评论" class="iconfont icon-comment"></i>
+        <i title="喜欢该音乐" style="font-size: 35px;" (click)="likeSong(_currentSong)" class="iconfont icon-heart1"></i>
+        <i title="下载" (click)="downloadSong(_currentSong)" class="iconfont icon-download"></i>
         <i title="评论" class="iconfont icon-comment"></i>
       </p>
     </div>
 
     <div class="song-detail-lyrics">
-      <h2>{{_currentSong?.songName}}</h2>
-      <h4><span>歌手: {{_currentSong?.singerName}}</span></h4>
+      <h2><span>{{_currentSong?.songName}}</span></h2>
+      <h4><span>{{_currentSong.singerName ? '歌手:' + _currentSong.singerName : ''}}</span></h4>
       <div class="music-lrc-wrap">
         <p class="music-lrc">
           <ng-container *ngFor="let item of _currentSong?.lyrics;let i = index;">
             <span class="music-lrc-item" [ngStyle]="{'color':nowPlayLrcIndex === i ? '#01e5ff' : 'black'}">
               {{item[1]}}</span>
           </ng-container>
+        </p>
+        <p class="music-lrc" style="margin-top: 20px; font-size: 28px;" *ngIf="_currentSong.lyrics.length === 0">
+          铁憨憨音乐，无所畏惧!
         </p>
       </div>
     </div>

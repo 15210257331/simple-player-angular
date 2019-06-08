@@ -50,9 +50,10 @@ enableProdMode(); // 解决父组件检查完后 子组件有改变了父组件�
   ],
   providers: [
     ApiService,
-    { provide: NZ_I18N, useValue: zh_CN }],
+    { provide: NZ_I18N, useValue: zh_CN },
     ...httpInterceptorProviders,
-   
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

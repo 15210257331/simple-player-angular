@@ -47,7 +47,7 @@ export class ApiService {
     }
 
     // 搜索建议
-    searchSuggest(keyword: string) {
+    searchSuggest(keyword: string): Observable<any> {
         return this.http.get(`${API}/search/suggest?keywords=${keyword}`);
     }
 
@@ -60,7 +60,7 @@ export class ApiService {
         return this.http.get(`${API}/personalized`);
     }
     // 每个歌单的详情
-    getChosenListDetail(id: string) {
+    getChosenListDetail(id: string): Observable<any> {
         return this.http.get(`${API}/playlist/detail?id=${id}`);
     }
     // 歌手类型列表
@@ -161,6 +161,11 @@ export class ApiService {
     // 获取推荐mv 2
     getReccomendMvList() {
       return this.http.get(`${API}/personalized/mv`);
+    }
+
+    // mv排行 3
+    getMvRank(): Observable<any> {
+      return this.http.get(`${API}/top/mv?limit=100`);
     }
 
     // 获取mv详情

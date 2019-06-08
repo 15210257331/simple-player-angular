@@ -15,17 +15,17 @@
             <img [src]="currentSong.songPic ? currentSong.songPic : 'assets/img/default-music-pic.jpg'" alt="">
         </div>
         <div class="progress-info">
-            <span *ngIf="currentSong._id" class="progress-info-left">{{currentSong.songName + '/' + currentSong.singerName}}</span>
-            <span *ngIf="!currentSong._id" class="progress-info-left">脑残音乐,无所畏惧</span>
-            <span *ngIf="currentSong._id" class="progress-info-right">{{audioRef?.currentTime | formatTime}}/{{audioRef?.duration | formatTime}}</span>
-            <span *ngIf="!currentSong._id" class="progress-info-right">00:00/00:00</span>
+            <span *ngIf="currentSong.id" class="progress-info-left">{{currentSong.songName + '/' + currentSong.singerName}}</span>
+            <span *ngIf="!currentSong.id" class="progress-info-left">铁憨憨音乐,无所畏惧</span>
+            <span *ngIf="currentSong.id" class="progress-info-right">{{audioRef?.currentTime | formatTime}}/{{audioRef?.duration | formatTime}}</span>
+            <span *ngIf="!currentSong.id" class="progress-info-right">00:00/00:00</span>
             <app-progress [rate]="rate" (changeRate)="changeProgressRate($event)"></app-progress>
         </div>
     </div>
     <div class="music-player-right">
         <i title="循环播放" class="iconfont icon-repeat"></i>
         <i title="音量" class="iconfont icon-voiceon"></i>
-        <i title="收藏" class="iconfont icon-heart1" (click)="collectionMusic(currentSong._id)"></i>
+        <i title="喜欢" class="iconfont icon-heart1" (click)="likeSong(currentSong)"></i>
         <i title="播放列表" class="iconfont icon-play-list-fill" (click)="toogleShowPlaylist()"></i>
     </div>
 </div>

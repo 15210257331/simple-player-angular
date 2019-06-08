@@ -47,9 +47,9 @@ export class VideoDetailComponent implements OnInit {
       })
     )
     .subscribe(res => {
-      console.log(res);
       this.videoDetail = res[0];
       this.videoSrc = res[1]['data']['url'];
+      console.log(this.videoDetail.data);
     });
   }
 

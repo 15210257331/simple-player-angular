@@ -4,13 +4,15 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 import { of, forkJoin } from 'rxjs';
 import { UserActionTypes, LoadUserInfoSuccess, LoadUserInfoError, LikeSongSuccess, LikeSongError } from '../actions';
 import { ApiService } from '../../service/api.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Injectable()
 export class UserEffects {
 
     constructor(
         private actions$: Actions,
-        private apiService: ApiService
+        private apiService: ApiService,
+        private message: NzMessageService
     ) { }
 
     @Effect()
@@ -57,6 +59,7 @@ export class UserEffects {
             this.apiService.likeSong(payload['id'])
                 .pipe(
                     map(data => {
+                        this.message.create('success', `success`);
                         return new LikeSongSuccess(payload['id']);
                     }),
                     catchError(err => {

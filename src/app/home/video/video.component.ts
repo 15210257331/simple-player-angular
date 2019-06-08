@@ -22,6 +22,10 @@ export class VideoComponent implements OnInit {
     {
       code: 2,
       name: '推荐MV'
+    },
+    {
+      code: 3,
+      name: 'MV排行'
     }
   ];
 
@@ -54,11 +58,23 @@ export class VideoComponent implements OnInit {
     });
   }
 
+  mvRankList() {
+    this.apiService.getMvRank().pipe(
+      finalize(() => {
+        this.loadingDone = true;
+      })
+    ).subscribe(res => {
+      this.mvList = res.data;
+    });
+  }
+
   changeClassify(code: number) {
     if (code === 1) {
       this.latestMvList();
     } else if (code === 2) {
       this.reccomendMvList();
+    } else if(code === 3) {
+      this.mvRankList();
     }
   }
 

@@ -70,10 +70,10 @@ export class HotDetailComponent implements OnInit {
   }
 
   playAll(event) {
-    event.stopPropagation();
-    this.loadingMusic = true;
-    const songArray = this.musicList.slice(0, 20);
-    this.store.dispatch(new AddToPlaylist(songArray));
+    // event.stopPropagation();
+    // this.loadingMusic = true;
+    // const songArray = this.musicList.slice(0, 20);
+    // this.store.dispatch(new AddToPlaylist(songArray));
   }
 
   likeSong(data: any) {

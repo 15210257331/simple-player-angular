@@ -38,5 +38,35 @@
             cursor: pointer;
             color: black;
         }
+        ul {
+            width: 200px;
+            position: absolute;
+            top: 32px;
+            left: 0;
+            height: auto;
+            max-height: 500px;
+            overflow-y: auto;
+            z-index: 999;
+            background-color: white;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            li {
+                width: 100%;
+                padding-left: 15px;
+                line-height: 35px;
+                height: 35px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+                cursor: pointer;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            li:hover {
+                background-color: $baseColor;
+                color: white;
+                border: 1px solid transparent;
+            }
+        }
     }
 }

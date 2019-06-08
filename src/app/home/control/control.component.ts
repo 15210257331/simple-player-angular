@@ -3,7 +3,7 @@ import { NzDrawerRef, NzDrawerService } from 'ng-zorro-antd'
 import { PlayListComponent } from './play-list/play-list.component';
 import { fromEvent } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { LoadCurrentSong, Appstate, ChangeCurrentSong } from '../../store';
+import { LoadCurrentSong, Appstate, ChangeCurrentSong, LikeSong } from '../../store';
 import { PlaylistState } from '../../store/reducers/playlist.reducer';
 import { map } from 'rxjs/operators';
 import { ToogleShowPlaylist } from '../../store/actions/global.action';
@@ -45,6 +45,7 @@ export class ControlComponent implements OnInit, AfterContentInit {
       .subscribe(res => {
         this.currentSong = res.currentSong;
         this.playlist = res.playlist;
+        this.currentSongIndexInPlaylist = res.currentIndex;
       })
     const global$ = this.store
       .pipe(
@@ -86,8 +87,8 @@ export class ControlComponent implements OnInit, AfterContentInit {
     if (this.currentSongIndexInPlaylist <= 0) {
       return;
     }
-    this.currentSongIndexInPlaylist -= 1;
-    let data = this.playlist[this.currentSongIndexInPlaylist];
+    let index = this.currentSongIndexInPlaylist - 1;
+    let data = this.playlist[index];
     this.store.dispatch(new LoadCurrentSong(data));
   }
 
@@ -95,12 +96,12 @@ export class ControlComponent implements OnInit, AfterContentInit {
     if (this.currentSongIndexInPlaylist >= this.playlist.length - 1) {
       return;
     }
-    this.currentSongIndexInPlaylist += 1;
-    let data = this.playlist[this.currentSongIndexInPlaylist];
+    let index = this.currentSongIndexInPlaylist + 1;
+    let data = this.playlist[index];
     this.store.dispatch(new LoadCurrentSong(data));
   }
 
-  collectionMusic(_id: string) {
-
+  likeSong(data: any) {
+    this.store.dispatch(new LikeSong(data));
   }
 }

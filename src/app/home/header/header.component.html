@@ -5,10 +5,13 @@
         <i class="iconfont icon-refresh" (click)="refresh()"></i>
     </div>
     <form class="header-search">
-        <input type="text" name="keyWord" placeholder="搜索音乐、歌单、MV" [(ngModel)]="keyword" (keyup)="searchSuggest()" (keydown.enter)="searchMusic()">
+        <input type="text" autocomplete="off" name="keyWord" placeholder="搜索音乐、歌单、MV" [(ngModel)]="keyword" 
+        [Debounce]="500" (debounceClick)="searchSuggest($event)" (keydown.enter)="searchMusic()">
         <i title="搜索" (click)="searchMusic()" class="iconfont icon-zoom-out"></i>
-        <ul>
-            <li></li>
+        <ul *ngIf="suggestList.length > 0">
+            <li *ngFor="let item of suggestList;" (click)="selectSuggestion(item.name)">
+                {{item.name}}
+            </li>
         </ul>
     </form>
 </div>

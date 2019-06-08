@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
 import { ApiService } from '../../service/api.service';
 import { Store } from '@ngrx/store';
-import { Appstate, LoadUserInfo } from '../../store';
+import { Appstate, LoadUserInfo, Logout } from '../../store';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -39,7 +39,7 @@ export class NavComponent implements OnInit {
       });
   }
 
-  // 获取登录状态拿到userId
+  // 获取登录状态拿到userId 来获取用户信息
   getUserLoginStatus() {
     this.apiService.getLoginStatus().subscribe(res => {
       if (res['code'] === 200) {
@@ -63,6 +63,13 @@ export class NavComponent implements OnInit {
       if (res) {
         this.getUserLoginStatus();
       }
+    });
+  }
+
+  logout() {
+    this.apiService.logout().subscribe(res => {
+      this.store.dispatch(new Logout());
+      this.message.success('logout success!');
     });
   }
 }

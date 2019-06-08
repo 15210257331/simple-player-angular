@@ -22,11 +22,17 @@ export class PlaylistEffects {
         mergeMap((payload) =>
             forkJoin(
                 this.apiService.getSongDetail(payload['id'])
-                    .pipe(catchError(() => of({ 'code': codeConstant.errorCode, banners: [] }))),
+                    .pipe(catchError((err) => {
+                        return of(new LoadCurrentSongError(err["message"]));
+                    })),
                 this.apiService.getSongUrl(payload['id'])
-                    .pipe(catchError(() => of({ 'code': codeConstant.errorCode, result: [] }))),
+                    .pipe(catchError((err) => {
+                        return of(new LoadCurrentSongError(err["message"]));
+                    })),
                 this.apiService.getSongLyric(payload['id'])
-                    .pipe(catchError(() => of({ 'code': codeConstant.errorCode, result: [] }))),
+                    .pipe(catchError((err) => {
+                        return of(new LoadCurrentSongError(err["message"]));
+                    })),
             )
             .pipe(
                 map(data => new LoadCurrentSongSuccess({currentSongDetail: data, currentSong: payload})),
